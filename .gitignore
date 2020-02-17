@@ -8,3 +8,6 @@ yarn.lock
 
 # other
 .DS_Store
+
+# environment variables
+.env
