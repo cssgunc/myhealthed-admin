@@ -1,24 +1,35 @@
-const Sequelize = require('sequelize');
-var StoryModel = require("./models/Story");
+const express = require("express");
+const bodyParser = require("body-parser");
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
+const db = require("./config/database");
 
-const sequelize = new Sequelize('myhealthed', 'postgres', '052899', {
-  host: 'localhost',
-  dialect: 'postgres',
-  pool: {
-    max: 9,
-    min: 0,
-    idle: 10000
-  }
-});
-const Story = StoryModel(sequelize,Sequelize)
 
-sequelize.authenticate().then(() => {
-  console.log("Success!");
-  sequelize.sync({ force: true })
-  .then(() => {
-    console.log(`Database & tables created!`)
-  })
+const StoryModel = require("./models/Story");
 
-}).catch((err) => {
-  console.log(err);
-});
+const app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(cookieParser()); // required before session.
+app.set("json spaces", 2);
+
+app.use(
+    session({
+      secret: "adsadsadsacascsadawfasfasfasdasdsa",
+      resave: true,
+      saveUninitialized: true
+    })
+  );
+
+
+const API_PORT = process.env.API_PORT || 3001;
+
+
+
+db.sequelize.sync({}).then(() => console.log("Database connected"));
+
+
+app.use("/stories", require("./routes/stories"));
+
+
+app.listen(API_PORT, () => console.log(`API listening on port ${API_PORT}`));
