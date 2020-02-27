@@ -1,6 +1,8 @@
 {
   "name": "airframe-dashboard",
   "version": "0.1.0",
+  "proxy": "http://localhost:3001",
+
   "description": "Seed project for flexible light React/Bootstrap 4 dashboards.",
   "main": "index.js",
   "scripts": {
@@ -50,6 +52,7 @@
     "@owczar/dashboard-style--airframe": "^0.1.13",
     "ag-grid-community": "^21.0.1",
     "ag-grid-react": "^21.0.1",
+    "axios": "^0.19.2",
     "bootstrap": "^4.3.1",
     "commander": "^2.20.0",
     "faker": "^4.1.0",
@@ -60,6 +63,8 @@
     "moment": "^2.24.0",
     "node-fetch": "^2.6.0",
     "numeral": "^2.0.6",
+    "pg": "^7.18.1",
+    "pg-hstore": "^2.3.3",
     "prop-types": "^15.7.2",
     "query-string": "^6.7.0",
     "rc-slider": "^8.6.13",
@@ -90,6 +95,7 @@
     "reactstrap": "^8.0.0",
     "recharts": "^1.6.2",
     "rimraf": "^2.6.3",
+    "sequelize": "^5.21.4",
     "text-mask-addons": "^3.8.0",
     "uuid": "^3.3.2",
     "webpack-cli": "^3.1.0",
