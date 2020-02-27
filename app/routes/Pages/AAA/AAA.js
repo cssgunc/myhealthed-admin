@@ -8,14 +8,15 @@ import {
 
 let sampleStory = 
     {
-        "id": 8,
-        "perspective": "First\n",
+        "id": 4,
+        "perspective": "male",
         "age": 12,
         "lgbtq": "yes",
         "race": "white",
         "phone": "123-456-7890",
         "topic": "bullying",
         "title": "This is the Title",
+        "lede": "this is the lede",
         "published": "2017-08-09T14:00:00.000Z",
         "like": 2,
         "cringey": 3,
@@ -29,6 +30,8 @@ let sampleStory =
         "link site name": "Link website",
         "link body": "this is the link body ",
       }
+
+
 
 // Sample post request
 axios.post("http://localhost:3001/stories/",sampleStory).then(data => console.log(data));

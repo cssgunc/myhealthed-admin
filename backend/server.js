@@ -17,7 +17,7 @@ app.set("json spaces", 2);
 
 app.use(
     session({
-      secret: "adsadsadsacascsadawfasfasfasdasdsa",
+      secret: "sfsalfnsaflknsadlknsandlsanfsanfnsaldnsadnlsalndsaldlnsadlnsandl",
       resave: true,
       saveUninitialized: true
     })
