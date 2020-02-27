@@ -28,6 +28,9 @@ module.exports = function(sequelize,Sequelize) {
       title: {
         type: Sequelize.STRING
       },
+      lede:{
+        type: Sequelize.STRING
+      },
       published: {
         type: Sequelize.DATE
       },
