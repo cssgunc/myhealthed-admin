@@ -2,16 +2,10 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const cors = require('cors')
-
 const cookieParser = require("cookie-parser");
 const db = require("./config/database");
 
-
-const StoryModel = require("./models/Story");
-
 const app = express();
-
-
 
 app.use(cors())
 app.options('*', cors());
