@@ -6,6 +6,7 @@ import {
 } from 'react-router';
 
 // ----------- Pages Imports ---------------
+import AAA from "./Pages/AAA"
 import Analytics from './Dashboards/Analytics';
 import ProjectsDashboard from './Dashboards/Projects';
 import System from './Dashboards/System';
@@ -115,7 +116,6 @@ export const RoutedContent = () => {
     return (
         <Switch>
             <Redirect from="/" to="/dashboards/projects" exact />
-            
             <Route path="/dashboards/analytics" exact component={Analytics} />
             <Route path="/dashboards/projects" exact component={ProjectsDashboard} />
             <Route path="/dashboards/system" exact component={System} />
@@ -206,6 +206,7 @@ export const RoutedContent = () => {
             <Route component={ Users } path="/apps/users/:type" />
             <Route component={ UsersResults } path="/apps/users-results" />
             <Route component={ VideosResults } path="/apps/videos-results" />
+            <Route path="/AAA"  component={AAA}/>
 
             { /*    Pages Routes    */ }
             <Route component={ ComingSoon } path="/pages/coming-soon" />
