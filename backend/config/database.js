@@ -24,5 +24,9 @@ const db = {};
 
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
+
+//Models 
 db.Story = require("../models/Story")(sequelize,Sequelize);
+db.Link = require("../models/Link")(sequelize,Sequelize);
+
 module.exports = db;
