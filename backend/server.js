@@ -32,6 +32,6 @@ db.sequelize.sync({}).then(() => console.log("Database connected"));
 
 
 app.use("/stories", require("./routes/stories"));
-
+app.use("/links",require("./routes/links"))
 
 app.listen(API_PORT, () => console.log(`API listening on port ${API_PORT}`));
