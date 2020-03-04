@@ -17,6 +17,16 @@ router.post("/", (req, res, next) => {
     Link.create(req.body).then(data=> res.send(data));
  });
 
+
+router.get("/upClickCount/:id",(req,res,next) => {
+    Link.findOne({ where: {
+        id: req.params.id
+      }}).then(link => {
+          link.timesClicked = link.timesClicked + 1;
+          link.save();
+      }).then(res.send(201))
+})
+
  router.delete("/:id", (req, res, next) => {
     Link.destroy({ where: {
         id: req.params.id
