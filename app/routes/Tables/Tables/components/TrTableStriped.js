@@ -17,27 +17,43 @@ const no = [
     "1",
     "2",
     "3",
-    "4"
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10"
 ];
 /*eslint-enable */
 
 const TrTableStriped = () => (
     <React.Fragment>
         {
-            _.times(4, (index) => (
+            _.times(20, (index) => (
                 <tr key={ index }>
                     <td className="align-middle">
-                        { no[index%4] }.
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id={"cb" + index }/>
+                            <label class="custom-control-label" for={"cb" + index }></label>
+                        </div>
+                    </td>
+                    <td className="align-middle">
+                        { index + 1 }
                     </td>
                     <td className="align-middle">
                         <span className="text-inverse">
                             { faker.commerce.productName() }
                         </span>
                     </td>
-                    <td className="align-middle">
-                        { faker.date.weekday() }, 12 { faker.date.month() }, 2018
-                    </td>
+                    <td className="align-middle">not-shared</td>
                     { lastMonth[index%2] }
+                    <td>topic</td>
+                    <td>published</td>
+                    <td>
+                        { faker.date.weekday() }, 12 { faker.date.month() }, 2020
+                    </td>
+                    <td><u>View</u> <u>Edit</u> <u>Delete</u></td>
                 </tr>
             ))
         }

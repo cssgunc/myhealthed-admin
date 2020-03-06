@@ -166,12 +166,17 @@ const Tables = () => (
                         <Table className="mb-0" striped responsive>
                             <thead>
                                 <tr>
-                                    <th className="bt-0">#</th>
-                                    <th className="bt-0">Product Name</th>
-                                    <th className="bt-0">Last Refresh</th>
+                                    <th className="bt-0"></th>
+                                    <th className="bt-0">ID</th>
+                                    <th className="bt-0">Text</th>
+                                    <th className="bt-0">Perspective</th>
                                     <th className="text-right bt-0">
-                                        Last Month
+                                        Lede
                                     </th>
+                                    <th className="bt-0">Topic</th>
+                                    <th className="bt-0">Published</th>
+                                    <th className="bt-0">Submitted</th>
+                                    <th className="bt-0"></th>
                                 </tr>
                             </thead>
                             <tbody>
