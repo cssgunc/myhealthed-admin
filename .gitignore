@@ -1,6 +1,8 @@
 # build output
 dist
 
+/backend/config/secrets.js
+
 # dependencies
 node_modules
 package-lock.json

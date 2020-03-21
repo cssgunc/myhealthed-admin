@@ -5,14 +5,17 @@ const db = require("../config/database");
 const Link = db.Link;
 
 router.get("/", (req, res, next) => {
-    Link.findAll().then(data=> res.send(data));
+    Link.findAll({
+        limit: 2, 
+        order: '"id" ASC'
+    }).then(data=> res.send(data));
 });
 router.get("/:id", (req, res, next) => {
-    Link.findAll({ where: {
+    Link .findAll({ where: {
         id: req.params.id
       }}).then(data=>res.send(data))
-
 });
+
 router.post("/", (req, res, next) => {  
     Link.create(req.body).then(data=> res.send(data));
  });
