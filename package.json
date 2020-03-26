@@ -6,14 +6,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run start:prod",
+    "start": "npm run prod",
     "build": "npm run build:prod",
+    "clean": "node --optimize_for_size --max_old_space_size=460 --gc_interval=100 ./build/cli-tools.js --clear dist --create dist",
     "postinstall": "npm run build:prod",
     "heroku-postbuild": "npm run build:prod",
-    "build:dev": "node ./build/cli-tools.js --clear dist --create dist && webpack --config ./build/webpack.config.client.dev.js",
-    "build:prod": "node --optimize_for_size --max_old_space_size=460 --gc_interval=100 ./build/cli-tools.js --clear dist --create dist && webpack --config ./build/webpack.config.client.prod.js",
-    "start:dev": "node ./build/cli-tools.js --clear dist --create dist && webpack-dev-server --config ./build/webpack.config.client.dev.js",
-    "start:prod": "node --optimize_for_size --max_old_space_size=460 --gc_interval=100 server.js"
+    "build:dev": "clean && webpack --config ./build/webpack.config.client.dev.js",
+    "build:prod": "clean && webpack --config ./build/webpack.config.client.prod.js",
+    "dev": "clean && webpack-dev-server --config ./build/webpack.config.client.dev.js",
+    "prod": "node --optimize_for_size --max_old_space_size=460 --gc_interval=100 server.js"
   },
   "author": "Webkom",
   "license": "ISC",
