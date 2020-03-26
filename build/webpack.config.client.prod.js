@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var AutoDllPlugin = require('html-webpack-plugin');
 var ExtractCssChunks = require("extract-css-chunks-webpack-plugin");
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 var TerserPlugin = require('terser-webpack-plugin');
