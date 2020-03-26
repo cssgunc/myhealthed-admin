@@ -11,9 +11,9 @@
     "clean": "node --optimize_for_size --max_old_space_size=460 --gc_interval=100 ./build/cli-tools.js --clear dist --create dist",
     "postinstall": "npm run build:prod",
     "heroku-postbuild": "npm run build:prod",
-    "build:dev": "npm run clean && webpack --config ./build/webpack.config.client.dev.js",
-    "build:prod": "npm run clean && webpack -p --config ./build/webpack.config.client.prod.js",
-    "dev": "npm run clean && webpack-dev-server --config ./build/webpack.config.client.dev.js",
+    "build:dev": "webpack --config ./build/webpack.config.client.dev.js",
+    "build:prod": "webpack -p --config ./build/webpack.config.client.prod.js",
+    "dev": "webpack-dev-server --config ./build/webpack.config.client.dev.js",
     "prod": "node --optimize_for_size --max_old_space_size=460 --gc_interval=100 server.js"
   },
   "author": "Webkom",
