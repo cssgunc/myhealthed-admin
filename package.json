@@ -11,12 +11,17 @@
     "postinstall": "npm run build:prod",
     "heroku-postbuild": "npm run build:prod",
     "build:dev": "npm run clean && webpack --config ./build/webpack.config.client.dev.js",
-    "build:prod": "npm run clean && webpack --config ./build/webpack.config.client.prod.js",
+    "build:prod": "npm run clean && webpack -p --config ./build/webpack.config.client.prod.js",
     "dev": "npm run clean && webpack-dev-server --config ./build/webpack.config.client.dev.js",
     "prod": "node --optimize_for_size --max_old_space_size=460 --gc_interval=100 server.js"
   },
   "author": "Webkom",
   "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.33.0",
+    "webpack-dev-server": "^3.7.1",
+    "webpack-flush-chunks": "^2.0.3"
+  },
   "dependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
