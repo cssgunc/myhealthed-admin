@@ -1,37 +1,14 @@
+const express = require('express');
 const path = require('path');
-const express = require("express");
-const bodyParser = require("body-parser");
-const session = require("express-session");
-const cookieParser = require("cookie-parser");
-const db = require("./backend/db/database");
-
+const port = process.env.PORT || 8080;
 const app = express();
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use(cookieParser()); // required before session.
-app.set("json spaces", 2);
+// the __dirname is the current directory from where the script is running
+app.use(express.static('dist'));
 
-app.use(
-  session({
-    secret: "sfsalfnsaflknsadlknsandlsanfsanfnsaldnsadnlsalndsaldlnsadlnsandl",
-    resave: true,
-    saveUninitialized: true
-  })
-);
-
-db.sequelize.sync({}).then(() => console.log("Database connected"));
-
-// links routes for backend api
-app.use("/api/stories", require("./backend/routes/stories"));
-app.use("/api/links", require("./backend/routes/links"));
-
-// links routes for frontend React webpack build
-app.use(express.static(path.join(__dirname, 'dist')));
-
-// sends the user to index html page for all other routes
+// send the user to index html page inspite of the url
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
+  res.sendFile(path.resolve('dist', 'index.html'));
 });
 
-module.exports = app;
+app.listen(port);
