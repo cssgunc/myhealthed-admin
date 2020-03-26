@@ -3,18 +3,13 @@
   "version": "0.1.0",
   "proxy": "http://localhost:3001",
   "description": "Seed project for flexible light React/Bootstrap 4 dashboards.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run prod",
-    "build": "npm run build:prod",
+    "start": "npm run build && node --optimize_for_size --max_old_space_size=460 --gc_interval=100 server.js",
+    "build": "webpack --config ./build/webpack.config.client.prod.js",
     "clean": "node --optimize_for_size --max_old_space_size=460 --gc_interval=100 ./build/cli-tools.js --clear dist --create dist",
-    "postinstall": "npm run build:prod",
-    "heroku-postbuild": "npm run build:prod",
-    "build:dev": "webpack --config ./build/webpack.config.client.dev.js",
-    "build:prod": "webpack -p --config ./build/webpack.config.client.prod.js",
-    "dev": "webpack-dev-server --config ./build/webpack.config.client.dev.js",
-    "prod": "node --optimize_for_size --max_old_space_size=460 --gc_interval=100 server.js"
+    "dev": "webpack-dev-server --config ./build/webpack.config.client.dev.js"
   },
   "author": "Webkom",
   "license": "ISC",
