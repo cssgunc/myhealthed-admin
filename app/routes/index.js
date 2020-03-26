@@ -60,6 +60,7 @@ import Editor from './Forms/Editor';
 import DatePicker from './Forms/DatePicker';
 import Dropzone from './Forms/Dropzone';
 import Sliders from './Forms/Sliders';
+import EditForm from './Forms/EditForm';
 
 import Tables from './Tables/Tables';
 import ExtendedTable from './Tables/ExtendedTable';
@@ -164,6 +165,7 @@ export const RoutedContent = () => {
             { /*    Forms Routes    */ }
             <Route component={ Forms } path="/forms/forms" />
             <Route component={ FormsLayouts } path="/forms/forms-layouts" />
+            <Route component={ EditForm } path="/forms/edit-form" /> 
             <Route component={ InputGroups } path="/forms/input-groups" />
             <Route component={ Wizard } path="/forms/wizard" />
             <Route component={ TextMask } path="/forms/text-mask" />
