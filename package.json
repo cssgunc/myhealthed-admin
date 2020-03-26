@@ -13,7 +13,7 @@
     "import-examples": "node backend/db/importData.js",
 
     "start:dev-hot": "node ./build/cli-tools.js --clear dist --create dist && webpack-dev-server --config ./build/webpack.config.client.dev.js",
-    "start": "npm run prod",
+    "start": "npm run start:prod",
 
     "build": "npm run build:prod",
     "clean": "node --optimize_for_size --max_old_space_size=460 --gc_interval=100 ./build/cli-tools.js --clear dist --create dist",
