@@ -1,4 +1,4 @@
-module.exports = function(sequelize,Sequelize) {
+module.exports = function(sequelize, Sequelize) {
   return sequelize.define(
     "stories",
     {
@@ -28,47 +28,55 @@ module.exports = function(sequelize,Sequelize) {
       title: {
         type: Sequelize.STRING
       },
-      lede:{
+      lede: {
         type: Sequelize.STRING
       },
       published: {
         type: Sequelize.DATE
       },
-      like:{
+      like: {
         type: Sequelize.INTEGER
-    },
-    cringey:{
+      },
+      cringey: {
         type: Sequelize.INTEGER
-    },
-    haha:{
+      },
+      haha: {
         type: Sequelize.INTEGER
-    },
-    "me too":{
+      },
+      "me too": {
         type: Sequelize.INTEGER
-    },
-    "interesting":{
+      },
+      interesting: {
         type: Sequelize.INTEGER
-    },
-    "story texts":{
+      },
+      "story texts": {
+        type: Sequelize.STRING(5000)
+      },
+      "link url": {
         type: Sequelize.STRING
-    },
-    "link url":{
+      },
+      "link photo": {
         type: Sequelize.STRING
-    },
-    "link photo":{
+      },
+      "link title": {
         type: Sequelize.STRING
-    },
-    "link title":{
+      },
+      "link site name": {
         type: Sequelize.STRING
-    },
-    "link site name":{
+      },
+      "link body": {
         type: Sequelize.STRING
-    },
-    "link body":{
-        type: Sequelize.STRING
-    },
+      },
+      createdAt: {
+        type: Sequelize.DATE,
+        allowNull: true
 
-},
+      },
+      updatedAt: {
+        type: Sequelize.DATE,
+        allowNull: true
+      }
+    },
     {
       freezeTableName: true
     }
