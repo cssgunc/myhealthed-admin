@@ -21,7 +21,7 @@
     "heroku-postbuild": "npm run build:prod",
 
     "build:dev": "node ./build/cli-tools.js --clear dist --create dist && webpack --config ./build/webpack.config.client.dev.js",
-    "build:prod": "node ./build/cli-tools.js --clear dist --create dist && webpack -p --config ./build/webpack.config.client.prod.js",
+    "build:prod": "node ./build/cli-tools.js --clear dist --create dist && webpack -p --progress --config ./build/webpack.config.client.prod.js",
     "start:dev": "npm run build:dev && node index.js",
     "start:prod": "node --optimize_for_size --max_old_space_size=460 --gc_interval=100 node index.js"
   },
@@ -99,7 +99,7 @@
     "react-bootstrap-typeahead": "^4.0.0-alpha.9",
     "react-datepicker": "^2.7.0",
     "react-dom": "^16.8.6",
-    "react-dropzone": "^10.1.5",
+    "react-dropzone": "^10.2.2",
     "react-grid-layout": "^0.16.6",
     "react-helmet": "^5.2.1",
     "react-hot-loader": "^4.11.0",
