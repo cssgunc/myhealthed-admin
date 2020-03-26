@@ -5,9 +5,11 @@ const db = require("../config/database");
 const Story = db.Story;
 
 router.get("/", (req, res, next) => {
+    let page = req.query.page || 0
+    let limit = 50;
     Story.findAll({
-        offset: 1 * req.query.page,
-        limit: 1,
+        offset: limit * page,
+        limit: limit,
         order: [['id', 'ASC']]
     }).then(data=>res.send(data))
 
