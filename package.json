@@ -7,10 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run start:prod",
     "build": "npm run build:prod",
-    "postinstall": "npm run build",
-    "build:dev": "node ./build/cli-tools.js --clear dist --create dist && webpack --config ./build/webpack.config.client.dev.js",
+    "postinstall": "npm run build:prod",
+    "heroku-postbuild": "npm run build:prod",
     "build:prod": "node --optimize_for_size --max_old_space_size=360 --gc_interval=100 ./build/cli-tools.js --clear dist --create dist && webpack --config ./build/webpack.config.client.prod.js",
-    "start:dev": "node ./build/cli-tools.js --clear dist --create dist && webpack-dev-server --config ./build/webpack.config.client.dev.js",
     "start:prod": "node --optimize_for_size --max_old_space_size=360 --gc_interval=100 ./build/cli-tools.js --clear dist --create dist && webpack-dev-server --config ./build/webpack.config.client.prod.js"
   },
   "author": "Webkom",
