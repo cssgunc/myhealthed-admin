@@ -6,9 +6,7 @@
 
 module.exports = {
     database:{
-        db: /* database name goes here */ , 
-        user: /* username goes here */,
-        password: /* password goes here */
+        url: "url-goes-here"
     }
 }
 

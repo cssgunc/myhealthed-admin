@@ -14,6 +14,11 @@ router.get("/", (req, res, next) => {
     }).then(data=>res.send(data))
 
 });
+router.get("/getAll", (req, res, next) => {
+    Story.findAll({
+    }).then(data=>res.send(data))
+
+});
 router.get("/:id", (req, res, next) => {
     Story.findAll({ where: {
         id: req.params.id

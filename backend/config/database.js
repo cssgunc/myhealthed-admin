@@ -1,13 +1,10 @@
 const Sequelize = require("sequelize");
 const Secrets = require("./secrets");
 const sequelize =  new Sequelize(
-  Secrets["database"]["db"],
-  Secrets["database"]["user"],
-  Secrets["database"]["password"],
-  {
-    host: "localhost",
+  Secrets["database"]["url"],
 
-    dialect: "postgres",
+  {
+
     logging: false,
     // operatorsAliases: false,
 

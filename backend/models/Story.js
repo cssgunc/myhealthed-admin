@@ -32,7 +32,8 @@ module.exports = function(sequelize, Sequelize) {
         type: Sequelize.STRING
       },
       published: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        allowNull: true
       },
       like: {
         type: Sequelize.INTEGER
