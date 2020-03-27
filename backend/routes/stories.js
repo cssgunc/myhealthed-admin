@@ -10,7 +10,7 @@ router.get("/", (req, res, next) => {
     Story.findAll({
         offset: limit * page,
         limit: limit,
-        order: [['id', 'ASC']]
+        order: [['id', 'DESC']]
     }).then(data=>res.send(data))
 
 });
