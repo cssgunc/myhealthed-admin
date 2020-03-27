@@ -9,12 +9,6 @@ import {
 import APIDemo from "./API_Demo/Demo"
 
 import Analytics from './Dashboards/Analytics';
-import ProjectsDashboard from './Dashboards/Projects';
-import System from './Dashboards/System';
-import Monitor from './Dashboards/Monitor'; 
-import Financial from './Dashboards/Financial';
-import Stock from './Dashboards/Stock';
-import Reports from './Dashboards/Reports';
 
 import Widgets from './Widgets';
 
@@ -55,15 +49,10 @@ import Tables from './Tables/Tables';
 import ExtendedTable from './Tables/ExtendedTable';
 import AgGrid from './Tables/AgGrid';
 
-import ComingSoon from './Pages/ComingSoon';
-import Confirmation from './Pages/Confirmation';
-import Danger from './Pages/Danger';
 import Error404 from './Pages/Error404';
 import ForgotPassword from './Pages/ForgotPassword';
-import LockScreen from './Pages/LockScreen';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
-import Success from './Pages/Success';
 import Timeline from './Pages/Timeline';
 
 import Icons from './Icons';
@@ -84,12 +73,6 @@ export const RoutedContent = () => {
 
             <Redirect from="/" to="/dashboards/projects" exact />
             <Route path="/dashboards/analytics" exact component={Analytics} />
-            <Route path="/dashboards/projects" exact component={ProjectsDashboard} />
-            <Route path="/dashboards/system" exact component={System} />
-            <Route path="/dashboards/monitor" exact component={Monitor} />
-            <Route path="/dashboards/financial" exact component={Financial} />
-            <Route path="/dashboards/stock" exact component={Stock} />
-            <Route path="/dashboards/reports" exact component={Reports} />
 
             <Route path='/widgets' exact component={Widgets} />
             
@@ -137,15 +120,10 @@ export const RoutedContent = () => {
             <Route component={ AgGrid } path="/tables/ag-grid" />
 
             { /*    Pages Routes    */ }
-            <Route component={ ComingSoon } path="/pages/coming-soon" />
-            <Route component={ Confirmation } path="/pages/confirmation" />
-            <Route component={ Danger } path="/pages/danger" />
             <Route component={ Error404 } path="/pages/error-404" />
             <Route component={ ForgotPassword } path="/pages/forgot-password" />
-            <Route component={ LockScreen } path="/pages/lock-screen" />
             <Route component={ Login } path="/pages/login" />
             <Route component={ Register } path="/pages/register" />
-            <Route component={ Success } path="/pages/success" />
             <Route component={ Timeline } path="/pages/timeline" />
 
             <Route path='/icons' exact component={Icons} />
