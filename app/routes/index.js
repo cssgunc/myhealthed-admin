@@ -6,7 +6,6 @@ import {
 } from 'react-router';
 
 // ----------- Pages Imports ---------------
-import AAA from "./Pages/AAA";
 import APIDemo from "./API_Demo/Demo"
 
 import Analytics from './Dashboards/Analytics';
@@ -210,7 +209,6 @@ export const RoutedContent = () => {
             <Route component={ Users } path="/apps/users/:type" />
             <Route component={ UsersResults } path="/apps/users-results" />
             <Route component={ VideosResults } path="/apps/videos-results" />
-            <Route path="/AAA"  component={AAA}/>
 
             { /*    Pages Routes    */ }
             <Route component={ ComingSoon } path="/pages/coming-soon" />
