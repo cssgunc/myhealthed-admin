@@ -175,7 +175,7 @@ const MediaObjects = () => (
                                 </Media>
                                 <Media body>
                                     <span className="mt-0 h6 mb-1">
-                                        <a href="javascript:;">
+                                        <a href='#' onClick={e => e.preventDefault()}>
                                             { faker.name.firstName() } { faker.name.lastName() }
                                         </a>
                                     </span>
@@ -205,7 +205,7 @@ const MediaObjects = () => (
                                 </Media>
                                 <Media body>
                                     <span className="mt-0 h6 mb-1">
-                                        <a href="javascript:;">
+                                        <a href='#' onClick={e => e.preventDefault()}>
                                             { faker.name.firstName() } { faker.name.lastName() }
                                         </a>
                                     </span>
@@ -235,7 +235,7 @@ const MediaObjects = () => (
                                 </Media>
                                 <Media body>
                                     <span className="mt-0 h6 mb-1">
-                                        <a href="javascript:;">
+                                        <a href='#' onClick={e => e.preventDefault()}>
                                             { faker.name.firstName() } { faker.name.lastName() }
                                         </a>
                                     </span>
@@ -1750,7 +1750,7 @@ const MediaObjects = () => (
                                     </span>
                                     <p>
                                         { faker.lorem.sentence() }<br />
-                                        <a href="javascript:;" className="small text-success">
+                                        <a href='#' onClick={e => e.preventDefault()} className="small text-success">
                                             { faker.internet.url() }
                                         </a>
                                     </p>
@@ -1781,7 +1781,7 @@ const MediaObjects = () => (
                                     </span>
                                     <p>
                                         { faker.lorem.sentence() }<br />
-                                        <a href="javascript:;" className="small text-success">
+                                        <a href='#' onClick={e => e.preventDefault()} className="small text-success">
                                             { faker.internet.url() }
                                         </a>
                                     </p>
@@ -1812,7 +1812,7 @@ const MediaObjects = () => (
                                     </span>
                                     <p>
                                         { faker.lorem.sentence() }<br />
-                                        <a href="javascript:;" className="small text-success">
+                                        <a href='#' onClick={e => e.preventDefault()} className="small text-success">
                                             { faker.internet.url() }
                                         </a>
                                     </p>

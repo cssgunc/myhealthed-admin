@@ -9,12 +9,6 @@ export const SidebarMiddleNav = () => (
             title="Dashboards"
         >
             <SidebarMenu.Item title="Analytics" to='/dashboards/analytics' exact />
-            <SidebarMenu.Item title="Projects" to='/dashboards/projects' exact />
-            <SidebarMenu.Item title="System" to='/dashboards/system' exact />
-            <SidebarMenu.Item title="Monitor" to='/dashboards/monitor' exact />
-            <SidebarMenu.Item title="Financial" to='/dashboards/financial' exact />
-            <SidebarMenu.Item title="Stock" to='/dashboards/stock' exact />
-            <SidebarMenu.Item title="Reports" to='/dashboards/reports' exact />
         </SidebarMenu.Item>
         <SidebarMenu.Item
             icon={<i className="fa fa-fw fa-th"></i>}
@@ -92,12 +86,7 @@ export const SidebarMiddleNav = () => (
             <SidebarMenu.Item title="Register" to="/pages/register" />
             <SidebarMenu.Item title="Login" to="/pages/login" />
             <SidebarMenu.Item title="Forgot Password" to="/pages/forgot-password" />
-            <SidebarMenu.Item title="Lock Screen" to="/pages/lock-screen" />
             <SidebarMenu.Item title="Error 404" to="/pages/error-404" />
-            <SidebarMenu.Item title="Confirmation" to="/pages/confirmation" />
-            <SidebarMenu.Item title="Success" to="/pages/success" />
-            <SidebarMenu.Item title="Danger" to="/pages/danger" />
-            <SidebarMenu.Item title="Coming Soon" to="/pages/coming-soon" />
             <SidebarMenu.Item title="Timeline" to="/pages/timeline" />
         </SidebarMenu.Item>
         <SidebarMenu.Item
@@ -110,17 +99,5 @@ export const SidebarMiddleNav = () => (
             title="Docs"
             href='https://webkom.gitbook.io/spin/v/airframe/airframe-react/documentation-react'
         />
-        { /* -------- Versions ---------*/ }
-        <SidebarMenu.Item
-            icon={<i className="fa fa-fw fa-folder-open-o"></i>}
-            title="Versions"
-        >
-            <SidebarMenu.Item title="NextJS (React)" href='http://airframe.nextjs.webkom.co/' />
-            <SidebarMenu.Item title="React" href='http://dashboards.webkom.co/react/airframe' />
-            <SidebarMenu.Item title="jQuery" to="http://dashboards.webkom.co/jquery/airframe/" />
-            <SidebarMenu.Item title="Vue" to="http://dashboards.webkom.co/vue/airframe" />
-            <SidebarMenu.Item title="Angular" to="http://dashboards.webkom.co/angular/airframe" />
-            <SidebarMenu.Item title=".NET MVC" to="http://dashboards.webkom.co/net-mvc/airframe" />
-        </SidebarMenu.Item>
     </SidebarMenu >
 );

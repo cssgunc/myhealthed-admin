@@ -36,7 +36,8 @@ export const StarRating = (props) => {
                         };
 
                         if (isInterctive) {
-                            starProps['href'] = 'javascript:;';
+                            starProps['href'] = '#';
+                            starProps['onClick'] = (e) => e.preventDefault();
                         }
 
                         stars.push(<StartElement { ...starProps } key={ i }></StartElement>);
