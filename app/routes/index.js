@@ -6,8 +6,9 @@ import {
 } from 'react-router';
 
 // ----------- Pages Imports ---------------
-import APIDemo from "./API_Demo/Demo"
-import LinkDemo from "./Link/LinkDemo"
+import Analytics from './Dashboards/Analytics';
+
+import Widgets from './Widgets';
 
 import Analytics from './Dashboards/Analytics';
 
@@ -61,11 +62,15 @@ import { SidebarASidebar } from './../layout/components/SidebarASidebar';
 export const RoutedContent = () => {
     return (
         <Switch>
-            <Route path="/demo" component={APIDemo} />
-            <Route path="/link-demo" component={LinkDemo} />
-
-            <Redirect from="/" to="/dashboards/projects" exact />
+            <Redirect from="/" to="/dashboards/analytics" exact />
+            
             <Route path="/dashboards/analytics" exact component={Analytics} />
+
+            <Route path='/widgets' exact component={Widgets} />
+            
+            { /*    Cards Routes     */ }
+            <Route path='/cards/cards' exact component={Cards} />
+            <Route path='/cards/cardsheaders' exact component={CardsHeaders} />
             
             { /*    Layouts     */ }
             <Route path='/layouts/sidebar' component={SidebarDefault} />
