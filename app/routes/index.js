@@ -10,9 +10,6 @@ import APIDemo from "./API_Demo/Demo"
 
 import Analytics from './Dashboards/Analytics';
 
-import Cards from './Cards/Cards';
-import CardsHeaders from './Cards/CardsHeaders';
-
 import SidebarDefault from './Layouts/SidebarDefault';
 import SidebarA from './Layouts/SidebarA';
 import DragAndDropLayout from './Layouts/DragAndDropLayout';
@@ -67,10 +64,6 @@ export const RoutedContent = () => {
 
             <Redirect from="/" to="/dashboards/projects" exact />
             <Route path="/dashboards/analytics" exact component={Analytics} />
-            
-            { /*    Cards Routes     */ }
-            <Route path='/cards/cards' exact component={Cards} />
-            <Route path='/cards/cardsheaders' exact component={CardsHeaders} />
             
             { /*    Layouts     */ }
             <Route path='/layouts/sidebar' component={SidebarDefault} />

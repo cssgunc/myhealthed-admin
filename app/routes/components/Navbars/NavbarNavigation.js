@@ -80,9 +80,6 @@ const NavbarNavigation = ({ accent, pills, ...navbarProps }) => (
                 <i className="fa fa-ellipsis-h fa-fw"></i>
             </DropdownToggle>
             <DropdownMenu>
-                <DropdownItem header>Cards</DropdownItem>
-                <DropdownItem tag={ Link } to="/cards/cards">Cards</DropdownItem>
-                <DropdownItem tag={ Link } to="/cards/cardsheaders">Cards Headers</DropdownItem>
                 <DropdownItem divider />
                 <DropdownItem header>Layouts</DropdownItem>
                 <DropdownItem tag={ Link } to="/layouts/navbar-only">Navbar Only</DropdownItem>
