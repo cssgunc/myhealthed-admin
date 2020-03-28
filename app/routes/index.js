@@ -8,9 +8,8 @@ import {
 // ----------- Pages Imports ---------------
 import Analytics from './Dashboards/Analytics';
 
-import Widgets from './Widgets';
-
-import Analytics from './Dashboards/Analytics';
+import Cards from './Cards/Cards';
+import CardsHeaders from './Cards/CardsHeaders';
 
 import SidebarDefault from './Layouts/SidebarDefault';
 import SidebarA from './Layouts/SidebarA';
@@ -65,8 +64,6 @@ export const RoutedContent = () => {
             <Redirect from="/" to="/dashboards/analytics" exact />
             
             <Route path="/dashboards/analytics" exact component={Analytics} />
-
-            <Route path='/widgets' exact component={Widgets} />
             
             { /*    Cards Routes     */ }
             <Route path='/cards/cards' exact component={Cards} />
