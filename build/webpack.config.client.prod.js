@@ -38,17 +38,7 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: config.srcHtmlLayout,
-            inject: true
-        }),
-        new AutoDllPlugin({
-            inject: true, // will inject the DLL bundles to index.html
-            filename: '[name].js',
-            entry: {
-              vendor: [
-                'react',
-                'react-dom'
-              ]
-            }
+            inject: false
         }),
         new webpack.HashedModuleIdsPlugin(),
         new ExtractCssChunks(),

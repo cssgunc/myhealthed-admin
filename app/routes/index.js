@@ -8,16 +8,12 @@ import {
 // ----------- Pages Imports ---------------
 import Analytics from './Dashboards/Analytics';
 
-import Widgets from './Widgets';
-
 import Cards from './Cards/Cards';
 import CardsHeaders from './Cards/CardsHeaders';
 
-import NavbarOnly from './Layouts/NavbarOnly';
 import SidebarDefault from './Layouts/SidebarDefault';
 import SidebarA from './Layouts/SidebarA';
 import DragAndDropLayout from './Layouts/DragAndDropLayout';
-import SidebarWithNavbar from './Layouts/SidebarWithNavbar';
 
 import Accordions from './Interface/Accordions';
 import Alerts from './Interface/Alerts';
@@ -53,8 +49,6 @@ import Login from './Pages/Login';
 import Register from './Pages/Register';
 import Timeline from './Pages/Timeline';
 
-import Icons from './Icons';
-
 // ----------- Layout Imports ---------------
 import { DefaultNavbar } from './../layout/components/DefaultNavbar';
 import { DefaultSidebar } from './../layout/components/DefaultSidebar';
@@ -70,18 +64,14 @@ export const RoutedContent = () => {
             <Redirect from="/" to="/dashboards/analytics" exact />
             
             <Route path="/dashboards/analytics" exact component={Analytics} />
-
-            <Route path='/widgets' exact component={Widgets} />
             
             { /*    Cards Routes     */ }
             <Route path='/cards/cards' exact component={Cards} />
             <Route path='/cards/cardsheaders' exact component={CardsHeaders} />
             
             { /*    Layouts     */ }
-            <Route path='/layouts/navbar' component={NavbarOnly} />
             <Route path='/layouts/sidebar' component={SidebarDefault} />
             <Route path='/layouts/sidebar-a' component={SidebarA} />
-            <Route path="/layouts/sidebar-with-navbar" component={SidebarWithNavbar} />
             <Route path='/layouts/dnd-layout' component={DragAndDropLayout} />
 
             { /*    Interface Routes   */ }
@@ -123,8 +113,6 @@ export const RoutedContent = () => {
             <Route component={ Register } path="/pages/register" />
             <Route component={ Timeline } path="/pages/timeline" />
 
-            <Route path='/icons' exact component={Icons} />
-
             { /*    404    */ }
             <Redirect to="/pages/error-404" />
         </Switch>
@@ -139,14 +127,6 @@ export const RoutedNavbars  = () => (
             component={ SidebarANavbar }
             path="/layouts/sidebar-a"
         />
-        <Route
-            component={ NavbarOnly.Navbar }
-            path="/layouts/navbar"
-        />
-        <Route
-            component={ SidebarWithNavbar.Navbar }
-            path="/layouts/sidebar-with-navbar"
-        />
         { /* Default Navbar: */}
         <Route
             component={ DefaultNavbar }
@@ -160,10 +140,6 @@ export const RoutedSidebars = () => (
         <Route
             component={ SidebarASidebar }
             path="/layouts/sidebar-a"
-        />
-        <Route
-            component={ SidebarWithNavbar.Sidebar }
-            path="/layouts/sidebar-with-navbar"
         />
         { /* Default Sidebar: */}
         <Route
