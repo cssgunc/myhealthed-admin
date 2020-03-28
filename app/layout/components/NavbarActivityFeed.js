@@ -77,11 +77,6 @@ const NavbarActivityFeed = (props) => (
                 }
                 </ListGroup>
             </ExtendedDropdown.Section>
-
-            <ExtendedDropdown.Section className="text-center" tag={ Link} to="/apps/widgets">
-                See All Notifications
-                <i className="fa fa-angle-right fa-fw ml-2" />
-            </ExtendedDropdown.Section>
         </ExtendedDropdown>
     </UncontrolledDropdown>
 );
