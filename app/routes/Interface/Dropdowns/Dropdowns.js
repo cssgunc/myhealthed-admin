@@ -859,40 +859,6 @@ const Dropdowns = () => (
                                         <h6 className="mb-0">Activity Feed</h6>
                                         <Badge pill>4</Badge>
                                     </ExtendedDropdown.Section>
-                                    <ExtendedDropdown.Section list>
-                                        <ListGroup>
-                                            <ListGroupItem tag={ Link } to="/widgets" action>
-                                                <Activity 
-                                                    iconColorBelow="success"
-                                                    icon="check"
-                                                />
-                                            </ListGroupItem>
-                                            <ListGroupItem tag={ Link } to="/widgets" action>
-                                                <Activity 
-                                                    iconColorBelow="danger"
-                                                    icon="close"
-                                                />
-                                            </ListGroupItem>
-                                            <ListGroupItem tag={ Link } to="/widgets" action>
-                                                <Activity 
-                                                    iconColorBelow="warning"
-                                                    icon="exclamation"
-                                                />
-                                            </ListGroupItem>
-                                            <ListGroupItem tag={ Link } to="/widgets" action>
-                                                <Activity 
-                                                    iconColorBelow="primary"
-                                                    icon="info"
-                                                />
-                                            </ListGroupItem>
-                                        </ListGroup>
-                                    </ExtendedDropdown.Section>
-                                    <ExtendedDropdown.Section className="text-center">
-                                        <Link to="/widgets">
-                                            See All Notifications
-                                            <i className="fa fa-angle-right fa-fw ml-2" />
-                                        </Link>
-                                    </ExtendedDropdown.Section>
                                 </ExtendedDropdown>
                             </UncontrolledButtonDropdown>
                         </CardBody>

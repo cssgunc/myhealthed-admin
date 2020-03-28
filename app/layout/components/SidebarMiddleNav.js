@@ -11,11 +11,6 @@ export const SidebarMiddleNav = () => (
         >
             <SidebarMenu.Item title="Analytics" to='/dashboards/analytics' exact />
         </SidebarMenu.Item>
-        <SidebarMenu.Item
-            icon={<i className="fa fa-fw fa-th"></i>}
-            title="Widgets"
-            to='/widgets'
-        />
         { /* -------- Cards ---------*/ }
         <SidebarMenu.Item
             icon={<i className="fa fa-fw fa-clone"></i>}
@@ -29,10 +24,8 @@ export const SidebarMiddleNav = () => (
             icon={<i className="fa fa-fw fa-columns"></i>}
             title="Layouts"
         >
-            <SidebarMenu.Item title="Navbar" to='/layouts/navbar' exact />
             <SidebarMenu.Item title="Sidebar" to='/layouts/sidebar' exact />
             <SidebarMenu.Item title="Sidebar A" to='/layouts/sidebar-a' exact />
-            <SidebarMenu.Item title="Sidebar With Navbar" to="/layouts/sidebar-with-navbar" exact />
             <SidebarMenu.Item title="Drag &amp; Drop" to='/layouts/dnd-layout' exact />
         </SidebarMenu.Item>
         { /* -------- Interface ---------*/ }
