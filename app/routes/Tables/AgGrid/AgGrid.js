@@ -1,6 +1,6 @@
 import React from 'react';
 import { chain, reduce } from 'lodash';
-import fetch from 'node-fetch';
+// import fetch from 'node-fetch';
 
 import {
     Container,
@@ -289,11 +289,11 @@ export default class AgGridExample extends React.Component {
     }
 
     componentDidMount() {
-        fetch(DATA_URL)
-            .then(res => res.json())
-            .then(fetchedData => {
-                this.setState({ rowData: fetchedData });
-            });
+        // fetch(DATA_URL)
+        //     .then(res => res.json())
+        //     .then(fetchedData => {
+        //         this.setState({ rowData: fetchedData });
+        //     });
     }
 
     componentDidUpdate(prevProps, prevState) {
