@@ -8,18 +8,18 @@ router.get("/", (req, res, next) => {
     Link.findAll({
         limit: 2, 
         order: '"id" ASC'
-    }).then(data=> res.send(data));
+    }).then(data => res.send(data));
 });
+
 router.get("/:id", (req, res, next) => {
-    Link .findAll({ where: {
+    Link.findAll({ where: {
         id: req.params.id
-      }}).then(data=>res.send(data))
+      }}).then(data => res.send(data))
 });
 
 router.post("/", (req, res, next) => {  
-    Link.create(req.body).then(data=> res.send(data));
+    Link.create(req.body).then(data => res.send(data));
  });
-
 
 router.get("/upClickCount/:id",(req,res,next) => {
     Link.findOne({ where: {
@@ -30,14 +30,10 @@ router.get("/upClickCount/:id",(req,res,next) => {
       }).then(res.send(201))
 })
 
- router.delete("/:id", (req, res, next) => {
+router.delete("/:id", (req, res, next) => {
     Link.destroy({ where: {
         id: req.params.id
-      }}).then(data=>res.sendStatus(204)).catch(err=>res.send(err));
-
+      }}).then(data => res.sendStatus(204)).catch(err=>res.send(err));
 });
 
-
-
 module.exports = router;
-

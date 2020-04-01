@@ -11,31 +11,27 @@ router.get("/", (req, res, next) => {
         offset: limit * page,
         limit: limit,
         order: [['id', 'DESC']]
-    }).then(data=>res.send(data))
-
+    }).then(data => res.send(data))
 });
+
 router.get("/getAll", (req, res, next) => {
-    Story.findAll({
-    }).then(data=>res.send(data))
-
+    Story.findAll().then(data => res.send(data))
 });
+
 router.get("/:id", (req, res, next) => {
     Story.findAll({ where: {
         id: req.params.id
-      }}).then(data=>res.send(data))
-
+    }}).then(data => res.send(data))
 });
 
 router.post("/", (req, res, next) => {  
-   Story.create(req.body).then(data=> res.send(data));
+   Story.create(req.body).then(data => res.send(data));
 });
 
 router.delete("/:id", (req, res, next) => {
     Story.destroy({ where: {
         id: req.params.id
-      }}).then(data=>res.sendStatus(204)).catch(err=>res.send(err));
-
+    }}).then(data => res.sendStatus(204)).catch(err=>res.send(err));
 });
-
 
 module.exports = router;

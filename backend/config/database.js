@@ -2,12 +2,9 @@ const Sequelize = require("sequelize");
 const Secrets = require("./secrets");
 const sequelize =  new Sequelize(
   Secrets["database"]["url"],
-
   {
-
     logging: false,
     // operatorsAliases: false,
-
     pool: {
       max: 15,
       min: 5,
