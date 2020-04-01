@@ -11,8 +11,8 @@ const [stories, setStories] = useState([]);
 
   async function fetchData() {
      
-    let  url = `http://localhost:3001/stories?page=${page}`
-    console.log(url)
+    let  url = `http://localhost:` + location.port + `/stories?page=${page}`;
+    console.log(url);
     const res = await fetch(url);
     res
       .json()
