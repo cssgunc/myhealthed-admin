@@ -20,7 +20,7 @@ app.use(
   })
 );
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 4100;
 
 db.sequelize.sync({}).then(() => console.log("Database connected"));
 
@@ -29,11 +29,11 @@ app.use("/stories", require("./backend/routes/stories"));
 app.use("/links", require("./backend/routes/links"));
 
 // links routes for frontend React webpack build
-app.use(express.static(path.join(__dirname, 'dist')))
+app.use(express.static(path.join(__dirname, 'dist')));
 
 // sends the user to index html page for all other routes
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve('dist', 'index.html'));
+  res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
 });
 
 app.listen(PORT, () => {
