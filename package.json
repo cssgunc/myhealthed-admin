@@ -2,7 +2,6 @@
   "name": "airframe-dashboard",
   "version": "0.1.0",
   "proxy": "http://localhost:3001",
-
   "description": "Seed project for flexible light React/Bootstrap 4 dashboards.",
   "main": "index.js",
   "scripts": {
@@ -10,8 +9,8 @@
     "start": "npm run start:dev",
     "build:dev": "node ./build/cli-tools.js --clear dist --create dist && webpack --config ./build/webpack.config.client.dev.js",
     "build:prod": "node ./build/cli-tools.js --clear dist --create dist && webpack --config ./build/webpack.config.client.prod.js",
-    "start:dev": "node ./build/cli-tools.js --clear dist --create dist && webpack-dev-server --config ./build/webpack.config.client.dev.js",
-    "start:prod": "node ./build/cli-tools.js --clear dist --create dist && webpack-dev-server --config ./build/webpack.config.client.prod.js"
+    "start:dev": "npm run build:dev && node server.js",
+    "start:prod": "node server.js"
   },
   "author": "Webkom",
   "license": "ISC",
@@ -53,8 +52,12 @@
     "ag-grid-community": "^21.0.1",
     "ag-grid-react": "^21.0.1",
     "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
     "bootstrap": "^4.3.1",
     "commander": "^2.20.0",
+    "cookie-parser": "^1.4.4",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
     "faker": "^4.1.0",
     "font-awesome": "^4.7.0",
     "holderjs": "^2.9.6",
@@ -62,6 +65,7 @@
     "mkdirp": "^0.5.1",
     "moment": "^2.24.0",
     "node-fetch": "^2.6.0",
+    "nodemon": "^2.0.2",
     "numeral": "^2.0.6",
     "pg": "^7.18.1",
     "pg-hstore": "^2.3.3",
