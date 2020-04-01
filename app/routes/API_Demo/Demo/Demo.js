@@ -10,7 +10,7 @@ const Demo = () => {
   },[]);
 
   async function fetchData() {
-    let  url = `http://localhost:` + location.port + `/stories?page=${page}`;
+    let  url = `http://localhost:` + location.port + `/api/stories?page=${page}`;
     console.log(url);
     const res = await fetch(url);
     res
@@ -29,8 +29,8 @@ const Demo = () => {
       <div>API TEST PAGE</div>
       <button onClick={loadMore}>Load More</button>
       <div>
-        {stories.map(story => {
-          return <p>{story.id} - {story["story texts"]}</p>;
+        {stories.map((story, i) => {
+          return <p key={i}>{story.id} - {story["story texts"]}</p>;
         })};
       </div>
     </Container>

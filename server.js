@@ -25,8 +25,8 @@ const PORT = process.env.PORT || 4100;
 db.sequelize.sync({}).then(() => console.log("Database connected"));
 
 // links routes for backend api
-app.use("/stories", require("./backend/routes/stories"));
-app.use("/links", require("./backend/routes/links"));
+app.use("/api/stories", require("./backend/routes/stories"));
+app.use("/api/links", require("./backend/routes/links"));
 
 // links routes for frontend React webpack build
 app.use(express.static(path.join(__dirname, 'dist')));
