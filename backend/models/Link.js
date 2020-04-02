@@ -9,7 +9,9 @@ module.exports = function(sequelize, Sequelize) {
       topic: {
         type: Sequelize.STRING
       },
-
+      subtopic: {
+        type: Sequelize.STRING
+      },
       title: {
         type: Sequelize.STRING
       },
