@@ -51,10 +51,10 @@ const StoryListView = () => (
                         <Table className="mb-0" responsive>
                             <thead>
                                 <tr>
-                                    <th className="bt-0">Project</th>
-                                    <th className="bt-0">Deadline</th>
-                                    <th className="bt-0">Leader</th>
-                                    <th className="bt-0">Budget</th>
+                                    <th className="bt-0">ID</th>
+                                    <th className="bt-0">Date Submitted</th>
+                                    <th className="bt-0">Prompt Title</th>
+                                    <th className="bt-0">Topic</th>
                                     <th className="bt-0">Status</th>
                                     <th className="text-right bt-0">
                                         Actions

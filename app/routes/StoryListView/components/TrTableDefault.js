@@ -87,22 +87,18 @@ const TrTableDefault = (props) => (
                         { faker.finance.transactionType() }
                     </td>
                     <td className="align-middle text-right">
-                        <UncontrolledButtonDropdown>
-                            <DropdownToggle color="link" className={` text-decoration-none ${ props.dropdownColor } `}>
-                                <i className="fa fa-gear"></i><i className="fa fa-angle-down ml-2"></i>
+                        <UncontrolledButtonDropdown direction="left">
+                            <DropdownToggle color="link" outline className={` text-decoration-none ${ props.dropdownColor } `}>
+                                <i className="fa fa-ellipsis-v"></i>
                             </DropdownToggle>
                             <DropdownMenu right>
                                 <DropdownItem>
-                                    <i className="fa fa-fw fa-envelope mr-2"></i>
-                                    Send Email
+                                    <i className="fa fa-fw fa-pencil-square-o mr-2"></i>
+                                    Edit
                                 </DropdownItem>
                                 <DropdownItem>
-                                    <i className="fa fa-fw fa-phone mr-2"></i>
-                                    Call
-                                </DropdownItem>
-                                <DropdownItem>
-                                    <i className="fa fa-fw fa-user mr-2"></i>
-                                    Profile
+                                    <i className="fa fa-fw fa-trash-o mr-2"></i>
+                                    Delete
                                 </DropdownItem>
                             </DropdownMenu>
                         </UncontrolledButtonDropdown>
