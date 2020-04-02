@@ -2,27 +2,27 @@ module.exports = function(sequelize, Sequelize) {
   let Link = sequelize.define(
     "links",
     {
-      id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
+      url: {
+        type: Sequelize.STRING,
         primaryKey: true
+      },
+      topic: {
+        type: Sequelize.STRING
+      },
+
+      title: {
+        type: Sequelize.STRING
       },
       siteName: {
         type: Sequelize.STRING
       },
-
-      linkTitle: {
+      timesUsed: {
         type: Sequelize.STRING
       },
-      url: {
-        type: Sequelize.STRING
-      },
-      storyTags: {
-        type: Sequelize.STRING
-      },
-      timesClicked: {
+      notes: {
         type: Sequelize.INTEGER
       }
+      
     },
     {
       freezeTableName: true
