@@ -3,17 +3,21 @@ const router = express.Router();
 const db = require("../config/database");
 
 const Link = db.Link;
+const Story = db.Story;
 
 router.get("/", (req, res, next) => {
+    let page = req.query.page || 0
+    let limit = 50;
     Link.findAll({
-        limit: 2, 
-        order: '"id" ASC'
-    }).then(data => res.send(data));
+        limit: 50, 
+        offset: limit * page,
+        limit: limit,
+   }).then(data => res.send(data));
 });
 
-router.get("/:id", (req, res, next) => {
+router.get("/:url", (req, res, next) => {
     Link.findOne({ where: {
-        id: req.params.id
+        url: req.params.url
       }}).then(data => res.send(data))
 });
 
@@ -36,21 +40,20 @@ router.post("/", (req, res, next) => {
     }
  });
 
-router.get("/upClickCount/:id",(req,res,next) => {
-    Link.findOne({ where: {
-        id: req.params.id
-      }}).then(link => {
-          link.timesClicked = link.timesClicked + 1;
-          link.save();
-      }).then(res.send(201))
-})
 
-router.delete("/:id", (req, res, next) => {
+
+router.delete("/:url", (req, res, next) => {
     Link.destroy({ where: {
-        id: req.params.id
+        url: req.params.url
       }}).then(data => res.sendStatus(204)).catch(err=>res.send(err));
 });
 
-// search url and return all stories that use it. 
+router.get("/getStories/:url",(req,res,next) => {
+    Story.findAll({ where: {
+        "link url": req.params.url
+      }}).then(stories => {
+        res.send(stories);
+      })
+})
 
 module.exports = router;
