@@ -12,13 +12,28 @@ router.get("/", (req, res, next) => {
 });
 
 router.get("/:id", (req, res, next) => {
-    Link.findAll({ where: {
+    Link.findOne({ where: {
         id: req.params.id
       }}).then(data => res.send(data))
 });
 
+
+//Throw error back up;
+// Check request body -> bad req
+// Create fails -> 500 
+// Try catch -> pass error to next, and set error status to 500
 router.post("/", (req, res, next) => {  
-    Link.create(req.body).then(data => res.send(data));
+    if(!body){
+        res.sendStatus(400);
+        return;
+    }
+    try {
+        Link.create(req.body).then(data => res.send(data));
+    }
+    catch(e){
+        e.status = 500;
+        next(e);
+    }
  });
 
 router.get("/upClickCount/:id",(req,res,next) => {
@@ -35,5 +50,7 @@ router.delete("/:id", (req, res, next) => {
         id: req.params.id
       }}).then(data => res.sendStatus(204)).catch(err=>res.send(err));
 });
+
+// search url and return all stories that use it. 
 
 module.exports = router;

@@ -19,14 +19,24 @@ router.get("/getAll", (req, res, next) => {
 });
 
 router.get("/:id", (req, res, next) => {
-    Story.findAll({ where: {
+    Story.find  ({ where: {
         id: req.params.id
     }}).then(data => res.send(data))
 });
 
 router.post("/", (req, res, next) => {  
-   Story.create(req.body).then(data => res.send(data));
-});
+  
+    if(!body){
+        res.sendStatus(400);
+        return;
+    }
+    try {
+        Story.create(req.body).then(data => res.send(data));
+    }
+    catch(e){
+        e.status = 500;
+        next(e);
+    }});
 
 router.delete("/:id", (req, res, next) => {
     Story.destroy({ where: {
