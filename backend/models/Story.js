@@ -23,7 +23,9 @@ module.exports = function(sequelize, Sequelize) {
         type: Sequelize.STRING
       },
       topic: {
-        type: Sequelize.STRING
+        type: Sequelize.ENUM({
+          values: ['bullying', 'relationships',"puberty"]
+        })
       },
       title: {
         type: Sequelize.STRING
@@ -31,7 +33,7 @@ module.exports = function(sequelize, Sequelize) {
       lede: {
         type: Sequelize.STRING
       },
-      published: {
+      publishedAt: {
         type: Sequelize.DATE,
         allowNull: true
       },
