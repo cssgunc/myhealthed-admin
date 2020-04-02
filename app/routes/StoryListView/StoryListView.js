@@ -12,9 +12,9 @@ import {
 
 import { HeaderMain } from "../components/HeaderMain";
 
-import {
+/*import {
     HeaderDemo
-} from "../components/HeaderDemo";
+} from "../components/HeaderDemo";*/
 
 import {
     TrTableDefault
@@ -27,24 +27,9 @@ const StoryListView = () => (
     <React.Fragment>
         <Container>
             <HeaderMain 
-                title="Tables"
+                title="Stories"
                 className="mb-5 mt-4"
             />
-            { /* START Header 1 */}
-            <Row> 
-                <Col lg={ 12 }>
-                    <HeaderDemo 
-                        no={1} 
-                        title="Basic Tables" 
-                        subTitle={(
-                            <React.Fragment>
-                                All table styles are inherited in Bootstrap 4, meaning any nested tables will be styled in the same manner as the parent.
-                            </React.Fragment>
-                        )}
-                    />
-                </Col>
-            </Row>
-            { /* END Header 1 */}
             { /* START Section 1 */}
             <Row>
                 <Col lg={ 12 }>
