@@ -6,13 +6,13 @@ const Link = db.Link;
 const Story = db.Story;
 
 router.get("/", (req, res, next) => {
-    let page = req.query.page || 0
+    let page = req.query.page || 0;
     let limit = 50;
     Link.findAll({
         limit: 50, 
         offset: limit * page,
         limit: limit,
-   }).then(data => res.send(data));
+    }).then(data => res.send(data));
 });
 router.get("/getAll", (req, res, next) => {
     Link.findAll().then(data => res.send(data))
@@ -21,7 +21,7 @@ router.get("/getAll", (req, res, next) => {
 router.get("/:url", (req, res, next) => {
     Link.findOne({ where: {
         url: req.params.url
-      }}).then(data => res.send(data))
+    }}).then(data => res.send(data));
 });
 
 
@@ -41,22 +41,12 @@ router.post("/", (req, res, next) => {
         e.status = 500;
         next(e);
     }
- });
-
-
+});
 
 router.delete("/:url", (req, res, next) => {
     Link.destroy({ where: {
         url: req.params.url
-      }}).then(data => res.sendStatus(204)).catch(err=>res.send(err));
+    }}).then(data => res.sendStatus(204)).catch(err=>res.send(err));
 });
-
-router.get("/getStories/:url",(req,res,next) => {
-    Story.findAll({ where: {
-        "link url": req.params.url
-      }}).then(stories => {
-        res.send(stories);
-      })
-})
 
 module.exports = router;
