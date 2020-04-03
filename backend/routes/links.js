@@ -14,6 +14,9 @@ router.get("/", (req, res, next) => {
         limit: limit,
    }).then(data => res.send(data));
 });
+router.get("/getAll", (req, res, next) => {
+    Link.findAll().then(data => res.send(data))
+});
 
 router.get("/:url", (req, res, next) => {
     Link.findOne({ where: {
