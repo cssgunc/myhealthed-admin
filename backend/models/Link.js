@@ -19,10 +19,10 @@ module.exports = function(sequelize, Sequelize) {
         type: Sequelize.STRING
       },
       timesUsed: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       notes: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       }
       
     },
