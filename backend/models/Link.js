@@ -31,10 +31,6 @@ module.exports = function(sequelize, Sequelize) {
     }
   );
 
-  Link.prototype.upClickCount = function upClickCount() {
-    console.log("old: " + this.timesClicked);
-    console.log("new: " + ++this.timesClicked);
-}
   
   return Link;
 };
