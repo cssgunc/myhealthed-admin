@@ -4,7 +4,11 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "mocha --exit 'test'",
+    "test": "mocha --exit './test'",
+    "test-clean": "npm run init-import && npm run test",
+    "init-import": "npm run init-db && npm run import-examples",
+    "init-db": "node ./db/dropTables.js && node ./db/initDb.js",
+    "import-examples": "node ./db/importData.js",
     "start": "node index.js",
     "data": "node ./scripts/importData.js"
   },

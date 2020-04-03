@@ -12,6 +12,13 @@ describe('Links', () => {
         });
     });
 
+    describe('Get all links', () => {
+        it('expect success HTTP 200 status', async () => {
+            let response = await supertest(app).get('/api/links/getAll');
+            expect(response.status).to.equal(200);
+        });
+    });
+
     let createdId = 0;
     describe('Create new link', () => {
         it('expect success HTTP 200 status', async () => {
