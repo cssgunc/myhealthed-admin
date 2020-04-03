@@ -3,7 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
-const db = require("./backend/config/database");
+const db = require("./backend/db/database");
 
 const app = express();
 
@@ -20,8 +20,6 @@ app.use(
   })
 );
 
-const PORT = process.env.PORT || 4100;
-
 db.sequelize.sync({}).then(() => console.log("Database connected"));
 
 // links routes for backend api
@@ -36,6 +34,4 @@ app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
 });
 
-app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}`);
-});
+module.exports = app;

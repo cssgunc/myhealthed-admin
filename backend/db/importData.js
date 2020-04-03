@@ -10,6 +10,7 @@ async function loadData(){
         Object.keys(myObj).forEach(k => myObj[k] = myObj[k] === '' ? null : myObj[k])
         await Story.create(myObj);
     }
+    process.exit(0);
 }
 
 loadData();

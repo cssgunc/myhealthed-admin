@@ -2,9 +2,16 @@ module.exports = function(sequelize, Sequelize) {
   let Link = sequelize.define(
     "links",
     {
+      id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        allowNull: false,
+        primaryKey: true
+      },
       url: {
         type: Sequelize.STRING,
-        primaryKey: true
+        allowNull: false,
+        unique: true        
       },
       topic: {
         type: Sequelize.STRING
