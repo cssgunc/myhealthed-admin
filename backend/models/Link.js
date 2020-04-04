@@ -9,12 +9,14 @@ module.exports = function(sequelize, Sequelize) {
         primaryKey: true
       },
       url: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(500),
         allowNull: false,
         unique: true        
       },
       topic: {
-        type: Sequelize.STRING
+        type: Sequelize.ENUM({
+          values: ['bullying', 'relationships',"puberty"]
+        })
       },
       subtopic: {
         type: Sequelize.STRING

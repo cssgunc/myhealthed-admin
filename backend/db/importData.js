@@ -1,4 +1,4 @@
-const data = require("../data/data.json");
+const storyData = require("../data/storyData.json");
 const linkData = require("../data/linkData.json");
 
 const db = require("../db/database");
@@ -8,8 +8,8 @@ const Link = db.Link;
 db.sequelize.sync({}).then(() => console.log("Database connected"));
 
 async function loadData(){
-    for(let i = 0; i < data.length; i++){
-        let myObj = data[i];
+    for(let i = 0; i < storyData.length; i++){
+        let myObj = storyData[i];
         Object.keys(myObj).forEach(k => myObj[k] = myObj[k] === '' ? null : myObj[k])
         await Story.create(myObj);
     }
