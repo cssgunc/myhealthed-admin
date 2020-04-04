@@ -1,6 +1,10 @@
 # build output
 dist
 
+# project-specific secret keys and sensitive data
+/backend/config/secrets.js
+/backend/data
+
 # dependencies
 node_modules
 package-lock.json

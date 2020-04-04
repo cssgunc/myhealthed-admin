@@ -3,7 +3,8 @@ import React from 'react';
 import { SidebarMenu } from './../../components';
 
 export const SidebarMiddleNav = () => (
-    <SidebarMenu>
+        <SidebarMenu>
+            <SidebarMenu.Item title="API Demo" to='/demo' exact />
         <SidebarMenu.Item
             icon={<i className="fa fa-fw fa-home"></i>}
             title="Dashboards"
