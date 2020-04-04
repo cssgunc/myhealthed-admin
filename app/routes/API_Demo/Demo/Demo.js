@@ -15,7 +15,7 @@ const Demo = () => {
     const res = await fetch(url);
     res
       .json()
-      .then(res => setStories(stories.concat(res)))
+      .then(data => setStories(stories.concat(data)))
       .then(()=> setPage(page+1))
       .catch(err => console.log(err));
   }
