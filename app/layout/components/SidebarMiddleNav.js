@@ -76,23 +76,6 @@ export const SidebarMiddleNav = () => (
         >
             <SidebarMenu.Item title="ReCharts" to='/graphs/re-charts' />
         </SidebarMenu.Item>
-        { /* -------- Forms ---------*/ }
-        <SidebarMenu.Item
-            icon={<i className="fa fa-fw fa-check-square-o"></i>}
-            title="Forms"
-        >
-            <SidebarMenu.Item title="Forms" to='/forms/forms' />
-            <SidebarMenu.Item title="Forms Layouts" to='/forms/forms-layouts' />
-            <SidebarMenu.Item title="Input Groups" to='/forms/input-groups' />
-            <SidebarMenu.Item title="Wizard" to='/forms/wizard' />
-            <SidebarMenu.Item title="Text Mask" to='/forms/text-mask' />
-            <SidebarMenu.Item title="Typeahead" to='/forms/typeahead' />
-            <SidebarMenu.Item title="Toggles" to='/forms/toggles' />
-            <SidebarMenu.Item title="Editor" to='/forms/editor' />
-            <SidebarMenu.Item title="Date Picker" to='/forms/date-picker' />
-            <SidebarMenu.Item title="Dropzone" to='/forms/dropzone' />
-            <SidebarMenu.Item title="Sliders" to='/forms/sliders' />
-        </SidebarMenu.Item>
         { /* -------- Tables ---------*/ }
         <SidebarMenu.Item
             icon={<i className="fa fa-fw fa-trello"></i>}
@@ -101,55 +84,6 @@ export const SidebarMiddleNav = () => (
             <SidebarMenu.Item title="Tables" to='/tables/tables' />
             <SidebarMenu.Item title="Extended Tables" to='/tables/extended-table' />
             <SidebarMenu.Item title="AgGrid" to='/tables/ag-grid' />
-        </SidebarMenu.Item>
-        { /* -------- Apps ---------*/ }
-        <SidebarMenu.Item
-            icon={<i className="fa fa-fw fa-mouse-pointer"></i>}
-            title="Apps"
-        >
-            <SidebarMenu.Item title="Projects">
-                <SidebarMenu.Item title="Projects List" to="/apps/projects/list" />
-                <SidebarMenu.Item title="Projects Grid" to="/apps/projects/grid" />
-            </SidebarMenu.Item>
-            <SidebarMenu.Item title="Tasks">
-                <SidebarMenu.Item title="Tasks List" to="/apps/tasks/list" />
-                <SidebarMenu.Item title="Tasks Grid" to="/apps/tasks/grid" />
-                <SidebarMenu.Item title="Tasks Kanban" to="/apps/tasks-kanban" />
-                <SidebarMenu.Item title="Tasks Details" to="/apps/task-details" />
-            </SidebarMenu.Item>
-            <SidebarMenu.Item title="Files">
-                <SidebarMenu.Item title="Files List" to="/apps/files/list" />
-                <SidebarMenu.Item title="Files Grid" to="/apps/files/grid" />
-            </SidebarMenu.Item>
-            <SidebarMenu.Item title="Search Results">
-                <SidebarMenu.Item title="Search Results" to="/apps/search-results" />
-                <SidebarMenu.Item title="Images Results" to="/apps/images-results" />
-                <SidebarMenu.Item title="Videos Results" to="/apps/videos-results" />
-                <SidebarMenu.Item title="Users Results" to="/apps/users-results" />
-            </SidebarMenu.Item>
-            <SidebarMenu.Item title="Users">
-                <SidebarMenu.Item title="Users List" to="/apps/users/list" />
-                <SidebarMenu.Item title="Users Grid" to="/apps/users/grid" />
-            </SidebarMenu.Item>
-            <SidebarMenu.Item title="Gallery">
-                <SidebarMenu.Item title="Gallery Grid" to="/apps/gallery-grid" />
-                <SidebarMenu.Item title="Gallery Table" to="/apps/gallery-table" />
-            </SidebarMenu.Item>
-            <SidebarMenu.Item title="Mailbox">
-                <SidebarMenu.Item title="Inbox" to="/apps/inbox" />
-                <SidebarMenu.Item title="New Email" to="/apps/new-email" />
-                <SidebarMenu.Item title="Email Details" to="/apps/email-details" />
-            </SidebarMenu.Item>
-            <SidebarMenu.Item title="Profile">
-                <SidebarMenu.Item title="Profile Details" to="/apps/profile-details" />
-                <SidebarMenu.Item title="Profile Edit" to="/apps/profile-edit" />
-                <SidebarMenu.Item title="Account Edit" to="/apps/account-edit" />
-                <SidebarMenu.Item title="Billing Edit" to="/apps/billing-edit" />
-                <SidebarMenu.Item title="Settings Edit" to="/apps/settings-edit" />
-                <SidebarMenu.Item title="Sessions Edit" to="/apps/sessions-edit" />
-            </SidebarMenu.Item>
-            <SidebarMenu.Item title="Clients" to="/apps/clients" exact />
-            <SidebarMenu.Item title="Chat" to="/apps/chat" exact />
         </SidebarMenu.Item>
         { /* -------- Pages ---------*/ }
         <SidebarMenu.Item

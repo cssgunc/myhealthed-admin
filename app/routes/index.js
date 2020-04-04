@@ -51,45 +51,9 @@ import DragAndDropElements from './Interface/DragAndDropElements';
 import Calendar from './Interface/Calendar';
 import ReCharts from './Graphs/ReCharts';
 
-import Forms from './Forms/Forms';
-import FormsLayouts from './Forms/FormsLayouts';
-import InputGroups from './Forms/InputGroups';
-import Wizard from './Forms/Wizard';
-import TextMask from './Forms/TextMask';
-import Typeahead from './Forms/Typeahead';
-import Toggles from './Forms/Toggles';
-import Editor from './Forms/Editor';
-import DatePicker from './Forms/DatePicker';
-import Dropzone from './Forms/Dropzone';
-import Sliders from './Forms/Sliders';
-
 import Tables from './Tables/Tables';
 import ExtendedTable from './Tables/ExtendedTable';
 import AgGrid from './Tables/AgGrid';
-
-import AccountEdit from './Apps/AccountEdit';
-import BillingEdit from './Apps/BillingEdit';
-import Chat from './Apps/Chat';
-import Clients from './Apps/Clients';
-import EmailDetails from './Apps/EmailDetails';
-import Files from './Apps/Files';
-import GalleryGrid from './Apps/GalleryGrid';
-import GalleryTable from './Apps/GalleryTable';
-import ImagesResults from './Apps/ImagesResults';
-import Inbox from './Apps/Inbox';
-import NewEmail from './Apps/NewEmail';
-import ProfileDetails from './Apps/ProfileDetails';
-import ProfileEdit from './Apps/ProfileEdit';
-import Projects from './Apps/Projects';
-import SearchResults from './Apps/SearchResults';
-import SessionsEdit from './Apps/SessionsEdit';
-import SettingsEdit from './Apps/SettingsEdit';
-import Tasks from './Apps/Tasks';
-import TasksDetails from './Apps/TasksDetails';
-import TasksKanban from './Apps/TasksKanban';
-import Users from './Apps/Users';
-import UsersResults from './Apps/UsersResults';
-import VideosResults from './Apps/VideosResults';
 
 import ComingSoon from './Pages/ComingSoon';
 import Confirmation from './Pages/Confirmation';
@@ -163,19 +127,6 @@ export const RoutedContent = () => {
             <Route component={ CropImage } path="/interface/crop-image" />
             <Route component={ DragAndDropElements } path="/interface/drag-and-drop-elements" />
             <Route component={ Calendar } path="/interface/calendar" />
-
-            { /*    Forms Routes    */ }
-            <Route component={ Forms } path="/forms/forms" />
-            <Route component={ FormsLayouts } path="/forms/forms-layouts" />
-            <Route component={ InputGroups } path="/forms/input-groups" />
-            <Route component={ Wizard } path="/forms/wizard" />
-            <Route component={ TextMask } path="/forms/text-mask" />
-            <Route component={ Typeahead } path="/forms/typeahead" />
-            <Route component={ Toggles } path="/forms/toggles" />
-            <Route component={ Editor } path="/forms/editor" />
-            <Route component={ DatePicker } path="/forms/date-picker" />
-            <Route component={ Dropzone } path="/forms/dropzone" />
-            <Route component={ Sliders } path="/forms/sliders" />
             
             { /*    Graphs Routes   */ }
             <Route component={ ReCharts } path="/graphs/re-charts" />
@@ -184,31 +135,6 @@ export const RoutedContent = () => {
             <Route component={ Tables } path="/tables/tables" />
             <Route component={ ExtendedTable } path="/tables/extended-table" />
             <Route component={ AgGrid } path="/tables/ag-grid" />
-
-            { /*    Apps Routes     */ }
-            <Route component={ AccountEdit } path="/apps/account-edit" />
-            <Route component={ BillingEdit } path="/apps/billing-edit" />
-            <Route component={ Chat } path="/apps/chat" />
-            <Route component={ Clients } path="/apps/clients" />
-            <Route component={ EmailDetails } path="/apps/email-details" />
-            <Route component={ Files } path="/apps/files/:type"/>
-            <Route component={ GalleryGrid } path="/apps/gallery-grid" />
-            <Route component={ GalleryTable } path="/apps/gallery-table" />
-            <Route component={ ImagesResults } path="/apps/images-results" />
-            <Route component={ Inbox } path="/apps/inbox" />
-            <Route component={ NewEmail } path="/apps/new-email" />
-            <Route component={ ProfileDetails } path="/apps/profile-details" />
-            <Route component={ ProfileEdit } path="/apps/profile-edit" />
-            <Route component={ Projects } path="/apps/projects/:type" />
-            <Route component={ SearchResults } path="/apps/search-results" />
-            <Route component={ SessionsEdit } path="/apps/sessions-edit" />
-            <Route component={ SettingsEdit } path="/apps/settings-edit" />
-            <Route component={ Tasks } path="/apps/tasks/:type" />
-            <Route component={ TasksDetails } path="/apps/task-details" />
-            <Route component={ TasksKanban } path="/apps/tasks-kanban" />
-            <Route component={ Users } path="/apps/users/:type" />
-            <Route component={ UsersResults } path="/apps/users-results" />
-            <Route component={ VideosResults } path="/apps/videos-results" />
 
             { /*    Pages Routes    */ }
             <Route component={ ComingSoon } path="/pages/coming-soon" />
