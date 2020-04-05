@@ -5,6 +5,8 @@ dist
 /backend/config/secrets.js
 /backend/data
 
+app/auth
+
 # dependencies
 node_modules
 package-lock.json
