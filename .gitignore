@@ -5,7 +5,7 @@ dist
 /backend/config/secrets.js
 /backend/data
 
-app/auth
+app/auth/config.js
 
 # dependencies
 node_modules

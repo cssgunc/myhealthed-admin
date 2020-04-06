@@ -1,9 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import firebase from "firebase/app";
-import "firebase/auth";
-
 import {
     Form,
     FormGroup,
@@ -18,22 +15,7 @@ import {
 
 import { HeaderAuth } from "../../components/Pages/HeaderAuth";
 import { FooterAuth } from "../../components/Pages/FooterAuth";
-
-import config from '../../../auth/config.js';
-
-
-var provider = new firebase.auth.GoogleAuthProvider();
-var app = firebase.initializeApp(config);
-
-
-async function googleLogin() {
-    var _googleSignIn = await firebase.auth().signInWithPopup(provider);
-    var token = _googleSignIn.credential.accessToken;
-    var user = _googleSignIn.user;
-
-    console.log(token);
-    console.log(user);
-}
+import { signInWithGoogle } from '../../../auth/firebase.js';
 
 const Login = () => (
     <EmptyLayout>
@@ -66,7 +48,7 @@ const Login = () => (
                 <ThemeConsumer>
                 {
                     ({ color }) => (
-                        <Button color={ color } onClick={googleLogin}>
+                        <Button color={ color } onClick={signInWithGoogle}>
                             Sign In
                         </Button>
                     )

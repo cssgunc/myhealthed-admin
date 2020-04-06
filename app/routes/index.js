@@ -83,6 +83,7 @@ export const RoutedContent = () => {
             <Route path="/demo" component={APIDemo} />
 
             <Redirect from="/" to="/dashboards/projects" exact />
+            <Redirect from="/login" to="/pages/login" exact />
             <Route path="/dashboards/analytics" exact component={Analytics} />
             <Route path="/dashboards/projects" exact component={ProjectsDashboard} />
             <Route path="/dashboards/system" exact component={System} />
