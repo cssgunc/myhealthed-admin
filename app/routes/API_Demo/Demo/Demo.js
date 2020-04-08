@@ -10,7 +10,7 @@ const Demo = () => {
   },[]);
 
   async function fetchData() {
-    let  url = `http://localhost:` + location.port + `/api/stories/get?page=${page}`;
+    let url = `/api/stories/get?page=${page}`;
     console.log(url);
     const res = await fetch(url);
     res
