@@ -9,7 +9,7 @@ const Demo = () => {
     fetchData();
   },[]);
 
-  async function fetchData() {
+  function fetchData() {
     let url = `/api/stories/get?page=${page}`;
     console.log(url);
     fetch(url)                           // returns Promise of response
