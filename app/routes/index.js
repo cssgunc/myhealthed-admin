@@ -7,11 +7,12 @@ import {
 
 // ----------- Pages Imports ---------------
 import APIDemo from "./API_Demo/Demo"
+import LinkDemo from "./Link/LinkDemo"
 
 import Analytics from './Dashboards/Analytics';
 import ProjectsDashboard from './Dashboards/Projects';
 import System from './Dashboards/System';
-import Monitor from './Dashboards/Monitor'; 
+import Monitor from './Dashboards/Monitor';
 import Financial from './Dashboards/Financial';
 import Stock from './Dashboards/Stock';
 import Reports from './Dashboards/Reports';
@@ -81,6 +82,7 @@ export const RoutedContent = () => {
     return (
         <Switch>
             <Route path="/demo" component={APIDemo} />
+            <Route path="/link-demo" component={LinkDemo} />
 
             <Redirect from="/" to="/dashboards/projects" exact />
             <Route path="/dashboards/analytics" exact component={Analytics} />
@@ -92,11 +94,11 @@ export const RoutedContent = () => {
             <Route path="/dashboards/reports" exact component={Reports} />
 
             <Route path='/widgets' exact component={Widgets} />
-            
+
             { /*    Cards Routes     */ }
             <Route path='/cards/cards' exact component={Cards} />
             <Route path='/cards/cardsheaders' exact component={CardsHeaders} />
-            
+
             { /*    Layouts     */ }
             <Route path='/layouts/navbar' component={NavbarOnly} />
             <Route path='/layouts/sidebar' component={SidebarDefault} />
@@ -127,7 +129,7 @@ export const RoutedContent = () => {
             <Route component={ CropImage } path="/interface/crop-image" />
             <Route component={ DragAndDropElements } path="/interface/drag-and-drop-elements" />
             <Route component={ Calendar } path="/interface/calendar" />
-            
+
             { /*    Graphs Routes   */ }
             <Route component={ ReCharts } path="/graphs/re-charts" />
 
@@ -176,7 +178,7 @@ export const RoutedNavbars  = () => (
         <Route
             component={ DefaultNavbar }
         />
-    </Switch>  
+    </Switch>
 );
 
 export const RoutedSidebars = () => (
