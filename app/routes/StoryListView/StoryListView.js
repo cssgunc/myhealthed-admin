@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { 
+import {
     Container,
     Row,
     Col,
@@ -22,16 +22,19 @@ import {
 import {
     TrTableStriped
 } from "./components/TrTableStriped";
+import {
+    AdvancedTableA
+} from "./components/AdvancedTableA";
 
 const StoryListView = () => (
     <React.Fragment>
         <Container>
-            <HeaderMain 
+            <HeaderMain
                 title="Stories"
                 className="mb-5 mt-4"
             />
-            { /* START Section 1 */}
-            <Row>
+
+          {/* <Row>
                 <Col lg={ 12 }>
                     <Card className="mb-3">
                         <CardBody>
@@ -42,15 +45,21 @@ const StoryListView = () => (
                                 </span>
                             </CardTitle>
                             <p className="mb-0">
-                                Using the most basic table markup, here’s how <code>.table-based</code> tables look in Bootstrap. 
-                                All table styles are inherited in Bootstrap 4, meaning any nested tables will be styled in the 
+                                Using the most basic table markup, here’s how <code>.table-based</code> tables look in Bootstrap.
+                                All table styles are inherited in Bootstrap 4, meaning any nested tables will be styled in the
                                 same manner as the parent.
                             </p>
                         </CardBody>
-                        { /* START Table */}
+
                         <Table className="mb-0" responsive>
                             <thead>
                                 <tr>
+                                    <th className="bt-0">
+                                      <div class="custom-control custom-checkbox">
+                                          <input type="checkbox" class="custom-control-input" id="cb-all"/>
+                                          <label class="custom-control-label" for="cb-all"></label>
+                                      </div>
+                                    </th>
                                     <th className="bt-0">ID</th>
                                     <th className="bt-0">Date Submitted</th>
                                     <th className="bt-0">Prompt Title</th>
@@ -65,13 +74,11 @@ const StoryListView = () => (
                                 <TrTableDefault />
                             </tbody>
                         </Table>
-                        { /* END Table */}
+
                     </Card>
                 </Col>
             </Row>
-            { /* END Section 1 */}
 
-            { /* START Section 3 */}
             <Row>
                 <Col lg={ 12 }>
                     <Card className="mb-3">
@@ -86,7 +93,7 @@ const StoryListView = () => (
                                 Use <code>striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code>.
                             </p>
                         </CardBody>
-                        { /* START Table */}
+
                         <Table className="mb-0" striped responsive>
                             <thead>
                                 <tr>
@@ -107,11 +114,16 @@ const StoryListView = () => (
                                 <TrTableStriped />
                             </tbody>
                         </Table>
-                        { /* END Table */}
+
                     </Card>
                 </Col>
+            </Row> */}
+
+            <Row>
+                <Col lg={ 12 }>
+                    <AdvancedTableA />
+                </Col>
             </Row>
-            { /* END Section 3 */}
 
         </Container>
     </React.Fragment>

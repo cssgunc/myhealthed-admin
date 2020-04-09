@@ -3,7 +3,7 @@ import faker from 'faker/locale/en_US';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 
-import { 
+import {
     UncontrolledButtonDropdown,
     DropdownToggle,
     DropdownMenu,
@@ -29,6 +29,12 @@ const TrTableDefault = (props) => (
             _.times(4, (index) => (
                 <tr key={ index }>
                     <td className="align-middle">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id={"cb" + index }/>
+                            <label class="custom-control-label" for={"cb" + index }></label>
+                        </div>
+                    </td>
+                    <td className="align-middle">
                         <div className={ props.projectColor }>
                             { faker.name.firstName() } { faker.name.lastName() }
                         </div>
@@ -51,18 +57,18 @@ const TrTableDefault = (props) => (
                                     size="md"
                                     src={ randomAvatar() }
                                     addOns={[
-                                        <AvatarAddOn.Icon 
+                                        <AvatarAddOn.Icon
                                             className="fa fa-circle"
                                             color={ props.leaderStatus }
                                             key="avatar-icon-bg"
                                         />,
-                                        <AvatarAddOn.Icon 
+                                        <AvatarAddOn.Icon
                                             className="fa fa-circle"
                                             color={ colorStatus[index%4] }
                                             key="avatar-icon-fg"
                                         />
                                     ]}
-                                /> 
+                                />
                             </Media>
                             <Media body>
                                 <div className="mt-0 d-flex text-inverse">
