@@ -74,6 +74,7 @@ import { DefaultSidebar } from './../layout/components/DefaultSidebar';
 
 import { SidebarANavbar } from './../layout/components/SidebarANavbar';
 import { SidebarASidebar } from './../layout/components/SidebarASidebar';
+import StoryListView from "./StoryListView"
 
 //------ Route Definitions --------
 // eslint-disable-next-line no-unused-vars
@@ -81,6 +82,7 @@ export const RoutedContent = () => {
     return (
         <Switch>
             <Route path="/demo" component={APIDemo} />
+            <Route path="/stories" exact component={StoryListView} />
 
             <Redirect from="/" to="/dashboards/projects" exact />
             <Route path="/dashboards/analytics" exact component={Analytics} />
