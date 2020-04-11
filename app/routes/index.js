@@ -8,7 +8,7 @@ import {
 // ----------- Pages Imports ---------------
 import APIDemo from "./API_Demo/Demo"
 import LinkDemo from "./Link/LinkDemo"
-
+import ViewEdit from "./ViewEdit";
 import SidebarDefault from './Layouts/SidebarDefault';
 import SidebarA from './Layouts/SidebarA';
 
@@ -32,6 +32,7 @@ export const RoutedContent = () => {
         <Switch>
             <Route path="/demo" component={APIDemo} />
             <Route path="/link-demo" component={LinkDemo} />
+            <Route path="/edit" component={ViewEdit} />
 
             <Redirect from="/" to="/demo" exact />
             
