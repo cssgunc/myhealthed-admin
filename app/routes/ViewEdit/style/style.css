@@ -1,0 +1,10 @@
+.x {
+    position: absolute;
+    background:transparent;
+    color: black;
+    right: -30px;
+}
+
+.header {
+    display:inline-block;
+}
