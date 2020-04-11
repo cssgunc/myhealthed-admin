@@ -8,6 +8,8 @@ import {
 // ----------- Pages Imports ---------------
 import APIDemo from "./API_Demo/Demo"
 
+import ViewEdit from "./ViewEdit";
+
 import Analytics from './Dashboards/Analytics';
 import ProjectsDashboard from './Dashboards/Projects';
 import System from './Dashboards/System';
@@ -81,6 +83,8 @@ export const RoutedContent = () => {
     return (
         <Switch>
             <Route path="/demo" component={APIDemo} />
+
+            <Route path="/edit" component={ViewEdit} />
 
             <Redirect from="/" to="/dashboards/projects" exact />
             <Route path="/dashboards/analytics" exact component={Analytics} />
