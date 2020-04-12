@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "proxy": "http://localhost:3001",
   "description": "Seed project for flexible light React/Bootstrap 4 dashboards.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "mocha --exit 'backend/test'",
     "test-clean": "npm run init-import && npm run test",
@@ -27,6 +27,11 @@
   },
   "author": "Webkom",
   "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.33.0",
+    "webpack-dev-server": "^3.7.1",
+    "webpack-flush-chunks": "^2.0.3"
+  },
   "dependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.5",
