@@ -6,11 +6,8 @@ import {
 } from 'react-router';
 
 // ----------- Pages Imports ---------------
-<<<<<<< HEAD
 import APIDemo from "./API_Demo/Demo"
 
-=======
->>>>>>> e72f9f79f1cd637d57096a7919da80c6f47f1e7e
 import Analytics from './Dashboards/Analytics';
 
 import SidebarDefault from './Layouts/SidebarDefault';
