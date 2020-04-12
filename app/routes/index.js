@@ -6,6 +6,8 @@ import {
 } from 'react-router';
 
 // ----------- Pages Imports ---------------
+import APIDemo from "./API_Demo/Demo"
+
 import Analytics from './Dashboards/Analytics';
 
 import SidebarDefault from './Layouts/SidebarDefault';
