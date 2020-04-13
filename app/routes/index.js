@@ -8,8 +8,6 @@ import {
 // ----------- Pages Imports ---------------
 import APIDemo from "./API_Demo/Demo"
 
-import Analytics from './Dashboards/Analytics';
-
 import SidebarDefault from './Layouts/SidebarDefault';
 import SidebarA from './Layouts/SidebarA';
 import DragAndDropLayout from './Layouts/DragAndDropLayout';
@@ -36,16 +34,11 @@ import Notifications from './Interface/Notifications';
 import CropImage from './Interface/CropImage';
 import DragAndDropElements from './Interface/DragAndDropElements';
 import Calendar from './Interface/Calendar';
-import ReCharts from './Graphs/ReCharts';
 
-import Tables from './Tables/Tables';
 import ExtendedTable from './Tables/ExtendedTable';
-import AgGrid from './Tables/AgGrid';
 
 import Error404 from './Pages/Error404';
-import ForgotPassword from './Pages/ForgotPassword';
 import Login from './Pages/Login';
-import Register from './Pages/Register';
 import Timeline from './Pages/Timeline';
 
 // ----------- Layout Imports ---------------
@@ -62,8 +55,7 @@ export const RoutedContent = () => {
         <Switch>
             <Route path="/demo" component={APIDemo} />
 
-            <Redirect from="/" to="/dashboards/projects" exact />
-            <Route path="/dashboards/analytics" exact component={Analytics} />
+            <Redirect from="/" to="/demo" exact />
             
             { /*    Layouts     */ }
             <Route path='/layouts/sidebar' component={SidebarDefault} />
@@ -93,20 +85,13 @@ export const RoutedContent = () => {
             <Route component={ CropImage } path="/interface/crop-image" />
             <Route component={ DragAndDropElements } path="/interface/drag-and-drop-elements" />
             <Route component={ Calendar } path="/interface/calendar" />
-            
-            { /*    Graphs Routes   */ }
-            <Route component={ ReCharts } path="/graphs/re-charts" />
 
             { /*    Tables Routes   */ }
-            <Route component={ Tables } path="/tables/tables" />
             <Route component={ ExtendedTable } path="/tables/extended-table" />
-            <Route component={ AgGrid } path="/tables/ag-grid" />
 
             { /*    Pages Routes    */ }
             <Route component={ Error404 } path="/pages/error-404" />
-            <Route component={ ForgotPassword } path="/pages/forgot-password" />
             <Route component={ Login } path="/pages/login" />
-            <Route component={ Register } path="/pages/register" />
             <Route component={ Timeline } path="/pages/timeline" />
 
             { /*    404    */ }

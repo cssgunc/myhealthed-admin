@@ -4,13 +4,7 @@ import { SidebarMenu } from './../../components';
 
 export const SidebarMiddleNav = () => (
         <SidebarMenu>
-            <SidebarMenu.Item title="API Demo" to='/demo' exact />
-        <SidebarMenu.Item
-            icon={<i className="fa fa-fw fa-home"></i>}
-            title="Dashboards"
-        >
-            <SidebarMenu.Item title="Analytics" to='/dashboards/analytics' exact />
-        </SidebarMenu.Item>
+        <SidebarMenu.Item title="API Demo" to='/demo' exact />
         { /* -------- Layouts ---------*/ }
         <SidebarMenu.Item
             icon={<i className="fa fa-fw fa-columns"></i>}
@@ -48,13 +42,6 @@ export const SidebarMiddleNav = () => (
             <SidebarMenu.Item title="Drag &amp; Drop Elements" to='/interface/drag-and-drop-elements' />
             <SidebarMenu.Item title="Calendar" to='/interface/calendar' />
         </SidebarMenu.Item>
-        { /* -------- Graphs ---------*/ }
-        <SidebarMenu.Item
-            icon={<i className="fa fa-fw fa-pie-chart"></i>}
-            title="Graphs"
-        >
-            <SidebarMenu.Item title="ReCharts" to='/graphs/re-charts' />
-        </SidebarMenu.Item>
         { /* -------- Tables ---------*/ }
         <SidebarMenu.Item
             icon={<i className="fa fa-fw fa-trello"></i>}
@@ -62,7 +49,6 @@ export const SidebarMiddleNav = () => (
         >
             <SidebarMenu.Item title="Tables" to='/tables/tables' />
             <SidebarMenu.Item title="Extended Tables" to='/tables/extended-table' />
-            <SidebarMenu.Item title="AgGrid" to='/tables/ag-grid' />
         </SidebarMenu.Item>
         { /* -------- Pages ---------*/ }
         <SidebarMenu.Item
@@ -75,11 +61,6 @@ export const SidebarMiddleNav = () => (
             <SidebarMenu.Item title="Error 404" to="/pages/error-404" />
             <SidebarMenu.Item title="Timeline" to="/pages/timeline" />
         </SidebarMenu.Item>
-        <SidebarMenu.Item
-            icon={<i className="fa fa-fw fa-star-o"></i>}
-            title="Icons"
-            to='/icons'
-        />
         <SidebarMenu.Item
             icon={<i className="fa fa-fw fa-bookmark-o"></i>}
             title="Docs"
