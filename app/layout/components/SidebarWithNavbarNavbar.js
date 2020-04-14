@@ -12,9 +12,6 @@ import {
     ThemeConsumer
 } from './../../components';
 
-import { NavbarActivityFeed } from './NavbarActivityFeed';
-import { NavbarMessages } from './NavbarMessages';
-import { NavbarUser } from './NavbarUser';
 import { LogoThemed } from './../../routes/components/LogoThemed/LogoThemed';
 
 export const SidebarWithNavbarNavbar = () => (
@@ -46,11 +43,6 @@ export const SidebarWithNavbarNavbar = () => (
                         Sidebar with Navbar
                     </h1>
 
-                    <Nav navbar className="ml-auto">
-                        <NavbarActivityFeed />
-                        <NavbarMessages className="ml-2" />
-                        <NavbarUser className="ml-2" />
-                    </Nav>
                 </Navbar>
                 { /*    Second Navbar    */}
                 <Navbar

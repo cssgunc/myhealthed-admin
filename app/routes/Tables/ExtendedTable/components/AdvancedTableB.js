@@ -3,26 +3,23 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import ToolkitProvider from 'react-bootstrap-table2-toolkit';
 import moment from 'moment';
 import _ from 'lodash';
-import faker from 'faker/locale/en_US';
 
 import {
-    Avatar,
     Badge,
     Button,
     ButtonGroup,
     Row,
     Col
 } from './../../../../components';
+import { randomArray } from './../../../../utilities';
 import { CustomExportCSV } from './CustomExportButton';
 import { CustomSearch } from './CustomSearch';
-import { randomArray, randomAvatar } from './../../../../utilities';
 
 const generateRow = (id) => ({
     id,
-    photo: randomAvatar(),
-    firstName: faker.name.firstName(),
-    lastName: faker.name.lastName(),
-    role: faker.name.jobType(),
+    firstName: "fname",
+    lastName: "lname",
+    role: "jobtitle",
     status: randomArray([
         'Active',
         'Suspended',
@@ -35,12 +32,12 @@ const generateRow = (id) => ({
         <i className="fa fa-fw fa-euro text-muted" key="cur_eur"></i>,
         <i className="fa fa-fw fa-dollar text-muted" key="cur_usd"></i>
     ]),
-    lastLoginDate: faker.date.recent(),
-    ipAddress: faker.internet.ip(),
+    lastLoginDate: "somedate",
+    ipAddress: "ipaddr",
     browser: 'Safari 9.1.1(11601.6.17)',
     os: 'OS X El Capitan',
     planSelected: randomArray(['Basic', 'Premium', 'Enterprise']),
-    planEnd: faker.date.future()
+    planEnd: "somedate"
 });
 
 const sortCaret = (order) => {
@@ -73,12 +70,6 @@ export class AdvancedTableB extends React.Component {
     createColumnDefinitions() {
         return [
             {
-                dataField: 'photo',
-                text: 'Photo',
-                formatter: (cell) => (
-                    <Avatar.Image src={ cell } />
-                )
-            }, {
                 dataField: 'firstName',
                 text: 'First Name',
                 sort: true,

@@ -1,5 +1,4 @@
 import React from 'react';
-import faker from 'faker/locale/en_US';
 
 import { 
     Badge,
@@ -14,13 +13,13 @@ const TrBorderless = () => (
                 <i className="fa fa-fw fa-check text-success"></i>
             </td>
             <td className="align-middle">
-                <samp>{ faker.random.number() }</samp>
+                <samp>1</samp>
             </td>
             <td className="align-middle">
-                { faker.date.weekday() }, 12 { faker.date.month() }, 2018
+                Monday, 12 January, 2018
             </td>
             <td className="align-middle text-inverse">
-                $ { faker.finance.amount() }
+                $ 1
             </td>
             <td className="align-middle">
                 <Badge color="primary">
@@ -29,7 +28,7 @@ const TrBorderless = () => (
             </td>
             <td className="align-middle">
                 <i className="fa fa-fw fa-paypal text-primary mr-2"></i>
-                { faker.internet.email() }
+                emailaddress
             </td>
             <td className="align-middle text-right">
                 <a href="#" id="UncontrolledTooltipDownload">
