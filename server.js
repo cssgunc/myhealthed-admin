@@ -16,8 +16,6 @@ app.use("/api/links", require("./backend/routes/links"));
 // links routes for frontend React webpack build
 app.use(express.static(path.join(__dirname, 'dist')));
 
-console.log("ENV: " + proccess.env);
-
 // sends the user to index html page for all other routes
 app.get('*', (req, res) => {
   res.sendFile(path.resolve('dist', 'index.html'));
