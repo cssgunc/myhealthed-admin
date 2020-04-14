@@ -2,13 +2,13 @@ import React, { useState } from "react";
 
 import SplitPane from 'react-split-pane';
 import { Tab, Tabs } from 'react-bootstrap-tabs';
-
 import {
     Container,
     Row,
     Col,
     Button
 } from './../../components';
+import TextDragDrop from './components/TextDragDrop';
 
 <link
     rel="stylesheet"
@@ -22,6 +22,7 @@ import './style/style.css';
 const ViewEdit = () => {
     const [open, setOpen] = useState(false);
     const [story, setStory] = useState();
+    const [text, setText] = useState();
 
     async function load() {
         if (story == null) {
@@ -29,6 +30,7 @@ const ViewEdit = () => {
                 .then(response => response.json())
                 .then(data => {
                     setStory(data[0]);
+                    setText(data[0]["story texts"].split(";"));
                 })
                 .catch(err => { console.log(err); })
         }
@@ -68,10 +70,8 @@ const ViewEdit = () => {
                                 </Row>
                                 <Row>
                                     <Col>
-                                        <b>Story Text: (to be converted to drag and drop)</b> <br />
-                                        {story["story texts"].split(";").map((text, i) => {
-                                            return <p key={i}>{text}</p>
-                                        })}
+                                        <b>Story Text:</b> <br />
+                                        <TextDragDrop text={text} setText={setText}/>
                                     </Col>
                                 </Row>
                             </Container>
