@@ -1,10 +1,8 @@
 import Accordion from './Accordion';
-import Avatar, { AvatarAddOn } from './Avatar';
 import Card from './Card';
 import CardHeader from './CardHeader';
 import Checkable from './Checkable';
 import CustomInput from './CustomInput';
-import Divider from './Divider';
 import EmptyLayout from './EmptyLayout';
 import ExtendedDropdown from './ExtendedDropdown';
 import FloatGrid from './FloatGrid';
@@ -20,14 +18,12 @@ import Layout, {
 import Nav from './Nav';
 import Navbar from './Navbar';
 import NavbarThemeProvider from './NavbarThemeProvider';
-import NestedDropdown from './NestedDropdown';
 import OuterClick from './OuterClick';
 import PageLoader from './PageLoader';
 import Progress from './Progress';
 import Sidebar from './Sidebar';
 import SidebarMenu from './SidebarMenu';
 import SidebarTrigger from './SidebarTrigger';
-import StarRating from './StarRating';
 import {
     ThemeClass,
     ThemeProvider,
@@ -38,7 +34,6 @@ import Tools from './Tools';
 import UncontrolledModal from './UncontrolledModal';
 import UncontrolledPopover from './UncontrolledPopover';
 import UncontrolledTabs from './UncontrolledTabs';
-import Wizard from './Wizard';
 // Export non overriden Reactstrap components
 export {
     Alert,
@@ -116,13 +111,10 @@ export {
 export {
     Accordion,
     //App,
-    Avatar,
-    AvatarAddOn,
     Card,
     CardHeader,
     Checkable,
     CustomInput,
-    Divider,
     EmptyLayout,
     ExtendedDropdown,
     FloatGrid,
@@ -133,7 +125,6 @@ export {
     Nav,
     Navbar,
     NavbarThemeProvider,
-    NestedDropdown,
     withPageConfig,
     setupPage,
     OuterClick,
@@ -144,7 +135,6 @@ export {
     Sidebar,
     SidebarMenu,
     SidebarTrigger,
-    StarRating,
     ThemeClass,
     ThemeConsumer,
     ThemeProvider,
@@ -153,5 +143,4 @@ export {
     UncontrolledPopover,
     UncontrolledTabs,
     UncontrolledModal,
-    Wizard
 };

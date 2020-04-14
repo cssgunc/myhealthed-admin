@@ -38,33 +38,6 @@ const NavbarNavigation = ({ accent, pills, ...navbarProps }) => (
 
         <UncontrolledDropdown nav inNavbar>
             <DropdownToggle nav>
-                Interface
-                <i className="fa fa-angle-down fa-fw ml-1"></i>
-            </DropdownToggle>
-            <DropdownMenu>
-                <DropdownItem tag={ Link } to="/interface/colors">Colors</DropdownItem>
-                <DropdownItem tag={ Link } to="/interface/typography">Typography</DropdownItem>
-                <DropdownItem tag={ Link } to="/interface/buttons">Buttons</DropdownItem>
-                <DropdownItem tag={ Link } to="/interface/paginations">Paginations</DropdownItem>
-                <DropdownItem tag={ Link } to="/interface/images">Images</DropdownItem>
-                <DropdownItem tag={ Link } to="/interface/avatars">Avatars</DropdownItem>
-                <DropdownItem tag={ Link } to="/interface/progressbars">Progress Bars</DropdownItem>
-                <DropdownItem tag={ Link } to="/interface/badgeslabels">Badges & Labels</DropdownItem>
-                <DropdownItem tag={ Link } to="/interface/mediaobjects">Media Objects</DropdownItem>
-                <DropdownItem tag={ Link } to="/interface/listgroups">List Groups</DropdownItem>
-                <DropdownItem tag={ Link } to="/interface/alerts">Alerts</DropdownItem>
-                <DropdownItem tag={ Link } to="/interface/accordions">Accordions</DropdownItem>
-                <DropdownItem tag={ Link } to="/interface/tabspills">Tabs Pills</DropdownItem>
-                <DropdownItem tag={ Link } to="/interface/tooltipspopovers">Tooltips Popovers</DropdownItem>
-                <DropdownItem tag={ Link } to="/interface/dropdowns">Dropdowns</DropdownItem>
-                <DropdownItem tag={ Link } to="/interface/dropdowns">Modals</DropdownItem>
-                <DropdownItem tag={ Link } to="/interface/breadcrumbs">Breadcrumbs</DropdownItem>
-                <DropdownItem tag={ Link } to="/interface/navbars">Navbars</DropdownItem>
-            </DropdownMenu>
-        </UncontrolledDropdown>
-
-        <UncontrolledDropdown nav inNavbar>
-            <DropdownToggle nav>
                 Layouts                                 
                 <i className="fa fa-angle-down fa-fw ml-1"></i>
             </DropdownToggle>

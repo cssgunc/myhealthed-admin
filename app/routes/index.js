@@ -10,30 +10,6 @@ import APIDemo from "./API_Demo/Demo"
 
 import SidebarDefault from './Layouts/SidebarDefault';
 import SidebarA from './Layouts/SidebarA';
-import DragAndDropLayout from './Layouts/DragAndDropLayout';
-
-import Accordions from './Interface/Accordions';
-import Alerts from './Interface/Alerts';
-import Avatars from './Interface/Avatars';
-import BadgesLabels from './Interface/BadgesLabels';
-import Breadcrumbs from './Interface/Breadcrumbs';
-import Buttons from './Interface/Buttons';
-import Colors from './Interface/Colors';
-import Dropdowns from './Interface/Dropdowns';
-import Images from './Interface/Images';
-import ListGroups from './Interface/ListGroups';
-import MediaObjects from './Interface/MediaObjects';
-import Modals from './Interface/Modals';
-import Navbars from './Interface/Navbars';
-import Paginations from './Interface/Paginations';
-import ProgressBars from './Interface/ProgressBars';
-import TabsPills from './Interface/TabsPills';
-import TooltipPopovers from './Interface/TooltipsPopovers';
-import Typography from './Interface/Typography';
-import Notifications from './Interface/Notifications';
-import CropImage from './Interface/CropImage';
-import DragAndDropElements from './Interface/DragAndDropElements';
-import Calendar from './Interface/Calendar';
 
 import ExtendedTable from './Tables/ExtendedTable';
 
@@ -60,31 +36,6 @@ export const RoutedContent = () => {
             { /*    Layouts     */ }
             <Route path='/layouts/sidebar' component={SidebarDefault} />
             <Route path='/layouts/sidebar-a' component={SidebarA} />
-            <Route path='/layouts/dnd-layout' component={DragAndDropLayout} />
-
-            { /*    Interface Routes   */ }
-            <Route component={ Accordions } path="/interface/accordions" />
-            <Route component={ Alerts } path="/interface/alerts" />
-            <Route component={ Avatars } path="/interface/avatars" />
-            <Route component={ BadgesLabels } path="/interface/badges-and-labels" />
-            <Route component={ Breadcrumbs } path="/interface/breadcrumbs" />
-            <Route component={ Buttons } path="/interface/buttons" />
-            <Route component={ Colors } path="/interface/colors" />
-            <Route component={ Dropdowns } path="/interface/dropdowns" />
-            <Route component={ Images } path="/interface/images" />
-            <Route component={ ListGroups } path="/interface/list-groups" />
-            <Route component={ MediaObjects } path="/interface/media-objects" />
-            <Route component={ Modals } path="/interface/modals" />
-            <Route component={ Navbars } path="/interface/navbars" />
-            <Route component={ Paginations } path="/interface/paginations" />
-            <Route component={ ProgressBars } path="/interface/progress-bars" />
-            <Route component={ TabsPills } path="/interface/tabs-pills" />
-            <Route component={ TooltipPopovers } path="/interface/tooltips-and-popovers" />
-            <Route component={ Typography } path="/interface/typography" />
-            <Route component={ Notifications } path="/interface/notifications" />
-            <Route component={ CropImage } path="/interface/crop-image" />
-            <Route component={ DragAndDropElements } path="/interface/drag-and-drop-elements" />
-            <Route component={ Calendar } path="/interface/calendar" />
 
             { /*    Tables Routes   */ }
             <Route component={ ExtendedTable } path="/tables/extended-table" />
