@@ -9,7 +9,6 @@ const Demo = () => {
     fetchData();
   },[]);
 
-
   function fetchData() {
     let url = `/api/stories/get?page=${page}`;
     console.log(url);
@@ -20,8 +19,6 @@ const Demo = () => {
         setPage(page+1);                 // increment page counter
     })                                   // (so next call will fetch next page)
       .catch(err => { console.log(err); });
-
-
   }
 
   return (
