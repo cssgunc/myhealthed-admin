@@ -34,6 +34,13 @@ const ProductQuality = {
     Unknown: 'product-quality__unknown'
 };
 
+const Status = {
+	Approved: 'status__approved',
+	Rejected: 'status__rejected',
+	Published: 'status__published',
+	NeedsReview: 'status__needs-review'
+};
+
 const sortCaret = (order) => {
     if (!order)
         return <i className="fa fa-fw fa-sort text-muted"></i>;
@@ -112,7 +119,7 @@ export class AdvancedTableA extends React.Component {
     createColumnDefinitions() {
         return [{
             dataField: 'id',
-            text: 'Product ID',
+            text: 'ID',
             headerFormatter: column => (
                 <React.Fragment>
                     <span className="text-nowrap">{ column.text }</span>
@@ -126,8 +133,22 @@ export class AdvancedTableA extends React.Component {
                 </React.Fragment>
             )
         }, {
-            dataField: 'name',
-            text: 'Product Name',
+            dataField: 'dateSubmitted',
+            text: 'Date Submitted',
+            formatter: (cell) =>
+                moment(cell).format('DD/MM/YYYY'),
+            filter: dateFilter({
+                className: 'd-flex align-items-center',
+                comparatorClassName: 'd-none',
+                dateClassName: 'form-control form-control-sm',
+                comparator: Comparator.GT,
+                getFilter: filter => { this.stockDateFilter = filter; }
+            }),
+            sort: true,
+            sortCaret
+        }, {
+            dataField: 'preview',
+            text: 'Response Preview/Lede',
             sort: true,
             sortCaret,
             formatter: (cell) => (
@@ -136,12 +157,12 @@ export class AdvancedTableA extends React.Component {
                 </span>
             ),
             ...buildCustomTextFilter({
-                placeholder: 'Enter product name...',
+                placeholder: 'Contains...',
                 getFilter: filter => { this.nameFilter = filter; }
             })
         }, {
-            dataField: 'quality',
-            text: 'Product Quality',
+            dataField: 'topic',
+            text: 'Topic',
             formatter: (cell) => {
                 let pqProps;
                 switch (cell) {
@@ -183,13 +204,54 @@ export class AdvancedTableA extends React.Component {
                 getFilter: filter => { this.qualityFilter = filter; }
             })
         }, {
-            dataField: 'price',
-            text: 'Product Price',
+            dataField: 'status',
+            text: 'Status',
+            formatter: (cell) => {
+                let pqProps;
+                switch (cell) {
+                    case Status.Approved:
+                        pqProps = {
+                            color: 'success',
+                            text: 'Approved'
+                        }
+                    break;
+                    case Status.Rejected:
+                        pqProps = {
+                            color: 'danger',
+                            text: 'Bad'
+                        }
+                    break;
+                    case Status.NeedsReview:
+                    	pqProps = {
+                    		color: 'yellow-05',
+                    		text: 'Needs Review'
+                    	}
+                    break;
+                    case Status.Published:
+                    default:
+                        pqProps = {
+                            color: 'primary',
+                            text: 'Published'
+                        }
+                }
+
+                return (
+                    <Badge color={pqProps.color}>
+                        { pqProps.text }
+                    </Badge>
+                )
+            },
             sort: true,
             sortCaret,
-            ...buildCustomNumberFilter({
-                comparators: [Comparator.EQ, Comparator.GT, Comparator.LT],
-                getFilter: filter => { this.priceFilter = filter; }
+            ...buildCustomSelectFilter({
+                placeholder: 'All',
+                options: [
+                    { value: Status.Published, label: 'Published' },
+                    { value: Status.Approved, label: 'Approved' },
+                    { value: Status.NeedsReview, label: 'Needs Review' },
+                    { value: Status.Rejected, label: 'Rejected' }
+                ],
+                getFilter: filter => { this.qualityFilter = filter; }
             })
         }, {
             dataField: 'satisfaction',
@@ -203,20 +265,6 @@ export class AdvancedTableA extends React.Component {
                 options: _.times(6, (i) => ({ value: i + 1, label: i + 1 })),
                 getFilter: filter => { this.satisfactionFilter = filter; }
             })
-        }, {
-            dataField: 'inStockDate',
-            text: 'In Stock From',
-            formatter: (cell) =>
-                moment(cell).format('DD/MM/YYYY'),
-            filter: dateFilter({
-                className: 'd-flex align-items-center',
-                comparatorClassName: 'd-none',
-                dateClassName: 'form-control form-control-sm',
-                comparator: Comparator.GT,
-                getFilter: filter => { this.stockDateFilter = filter; }
-            }),
-            sort: true,
-            sortCaret
         }];
     }
 
