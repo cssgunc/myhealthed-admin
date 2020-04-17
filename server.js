@@ -1,9 +1,12 @@
 const path = require('path');
 const express = require("express");
+const bodyParser = require("body-parser");
 const db = require("./backend/db/database");
 
 const app = express();
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 app.set("json spaces", 2);
 
 db.sequelize.sync({}).then(() => console.log("Database connected"));
