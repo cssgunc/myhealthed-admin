@@ -7,6 +7,7 @@ import {
 
 // ----------- Pages Imports ---------------
 import APIDemo from "./API_Demo/Demo"
+import LinkDemo from "./Link/LinkDemo"
 
 import SidebarDefault from './Layouts/SidebarDefault';
 import SidebarA from './Layouts/SidebarA';
@@ -30,6 +31,7 @@ export const RoutedContent = () => {
     return (
         <Switch>
             <Route path="/demo" component={APIDemo} />
+            <Route path="/link-demo" component={LinkDemo} />
 
             <Redirect from="/" to="/demo" exact />
             
@@ -63,7 +65,7 @@ export const RoutedNavbars  = () => (
         <Route
             component={ DefaultNavbar }
         />
-    </Switch>  
+    </Switch>
 );
 
 export const RoutedSidebars = () => (
