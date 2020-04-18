@@ -14,7 +14,9 @@ export const signInWithGoogle = () => {
 }
 
 export const signOut = () => {
-  auth.signOut();
+  if(window.confirm('Are you sure you want to logout?')) auth.signOut();
 }
+
+export const googleSignIn = firebase.auth.GoogleAuthProvider.GOOGLE_SIGN_IN_METHOD;
 
 export default auth;

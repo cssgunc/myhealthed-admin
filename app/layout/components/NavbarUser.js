@@ -9,7 +9,7 @@ import {
 import { signOut } from '../../auth/firebase';
 
 const NavbarUser = (props) => (
-    <NavItem { ...props }>
+    <NavItem {...props}>
         <NavLink onClick={ signOut }>
             <i className="fa fa-power-off"></i>
         </NavLink>
