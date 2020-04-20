@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { hot } from 'react-hot-loader'
 import { BrowserRouter as Router } from 'react-router-dom';
 
@@ -6,7 +6,7 @@ import AppLayout from './../../layout/default';
 import { RoutedContent } from './../../routes';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import { UserContext } from "../../providers/UserProvider";
-import auth, { googleSignIn } from '../../auth/firebase';
+import auth, { googleSignIn } from '../../firebase/firebase';
 
 const uiConfig = {
     signInOptions: [googleSignIn],
@@ -17,8 +17,8 @@ const basePath = process.env.BASE_PATH || '/';
 
 const LoginBoxContainer = {
     'display': 'flex',
-    'align-items': 'center',
-    'justify-content': 'center',
+    'alignItems': 'center',
+    'justifyContent': 'center',
     'height': '100vh',
 };
 
@@ -31,10 +31,11 @@ const AppClient = () => {
     return (
         user ?
             <Router basename={basePath}>
-                <AppLayout>
+                <AppLayout user={user}>
                     <RoutedContent />
                 </AppLayout>
             </Router>
+
             :
             <div style={LoginBoxContainer}>
                 <div style={LoginBox}>

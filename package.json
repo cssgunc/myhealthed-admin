@@ -65,6 +65,8 @@
     "express-session": "^1.17.0",
     "faker": "^4.1.0",
     "firebase": "^7.13.2",
+    "firebase-functions": "^3.6.0",
+    "firebase-tools": "^8.1.1",
     "font-awesome": "^4.7.0",
     "holderjs": "^2.9.6",
     "lodash": "^4.17.11",

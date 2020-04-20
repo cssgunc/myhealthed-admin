@@ -15,7 +15,7 @@ import {
 
 import { HeaderAuth } from "../../components/Pages/HeaderAuth";
 import { FooterAuth } from "../../components/Pages/FooterAuth";
-import { signInWithGoogle } from '../../../auth/firebase.js';
+import { signInWithGoogle } from '../../../firebase/firebase.js';
 
 const Login = () => (
     <EmptyLayout>

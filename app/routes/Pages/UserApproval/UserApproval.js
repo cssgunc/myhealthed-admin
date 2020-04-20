@@ -19,11 +19,9 @@ const UserApproval = () => (
                 title="User Approval"
                 className="mb-5 mt-4"
             />
-            { /* START Section 1 */}
             <Row>
                 <Col lg={12}>
                     <Card className="mb-3">
-                        { /* START Table */}
                         <Table className="mb-0" responsive>
                             <thead>
                                 <tr>
@@ -37,11 +35,9 @@ const UserApproval = () => (
                                 <UserTable />
                             </tbody>
                         </Table>
-                        { /* END Table */}
                     </Card>
                 </Col>
             </Row>
-            { /* END Section 1 */}
         </Container>
     </React.Fragment>
 );

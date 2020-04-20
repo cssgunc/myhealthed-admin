@@ -6,7 +6,7 @@ import {
     NavLink
 } from './../../components';
 
-import { signOut } from '../../auth/firebase';
+import { signOut } from '../../firebase/firebase';
 
 const NavbarUser = (props) => (
     <NavItem {...props}>
