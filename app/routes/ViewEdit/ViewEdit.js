@@ -22,15 +22,20 @@ import './../../styles/view-edit.scss';
 const ViewEdit = () => {
     const [open, setOpen] = useState(false);
     const [story, setStory] = useState();
-    const [text, setText] = useState();
+
+    function setText(items) {
+        let newStory = story;
+        newStory["story texts"] = items;
+        setStory(newStory);
+    }
 
     async function load() {
         if (story == null) {
             await fetch(`/api/stories/get?page=0`)
                 .then(response => response.json())
                 .then(data => {
+                    data[0]["story texts"] = data[0]["story texts"].split(";");
                     setStory(data[0]);
-                    setText(data[0]["story texts"].split(";"));
                 })
                 .catch(err => { console.log(err); })
         }
@@ -75,7 +80,7 @@ const ViewEdit = () => {
                                 <Row>
                                     <Col>
                                         <b>Story Text:</b> <br />
-                                        <TextDragDrop className="no-padding" text={text} setText={setText}/>
+                                        <TextDragDrop className="no-padding" text={story["story texts"]} setText={setText}/>
                                     </Col>
                                 </Row>
                             </Container>
