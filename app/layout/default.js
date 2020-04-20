@@ -90,13 +90,11 @@ class AppLayout extends React.Component {
                         </Layout>
                     </ThemeProvider>
                     :
-                    this.state.userType == 'unverified' ?
-                        <div style={Centering}>
-                            <div style={Box}>
-                                <h1>Awaiting Admin Approval</h1>
-                            </div>
+                    <div style={Centering}>
+                        <div style={Box}>
+                            <h1>Awaiting Admin Approval</h1>
                         </div>
-                        : null
+                    </div>
                 : null
         );
     }

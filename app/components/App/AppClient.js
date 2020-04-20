@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { hot } from 'react-hot-loader'
 import { BrowserRouter as Router } from 'react-router-dom';
 
@@ -15,18 +15,33 @@ const uiConfig = {
 
 const basePath = process.env.BASE_PATH || '/';
 
-const LoginBoxContainer = {
-    'display': 'flex',
-    'alignItems': 'center',
-    'justifyContent': 'center',
-    'height': '100vh',
-};
-
 const LoginBox = {
     'width': '365px',
 }
 
 const AppClient = () => {
+    const [hidden, setHidden] = useState({
+        'display': 'none',
+        'alignItems': 'center',
+        'justifyContent': 'center',
+        'height': '100vh',
+    });
+
+    useEffect(() => {
+        setTimeout(function () {
+            show()
+        }, 500)
+    }, []);
+
+    const show = () => {
+        !user && setHidden({
+            'display': 'flex',
+            'alignItems': 'center',
+            'justifyContent': 'center',
+            'height': '100vh',
+        });
+    }
+
     const user = useContext(UserContext);
     return (
         user ?
@@ -35,9 +50,8 @@ const AppClient = () => {
                     <RoutedContent />
                 </AppLayout>
             </Router>
-
             :
-            <div style={LoginBoxContainer}>
+            <div style={hidden} >
                 <div style={LoginBox}>
                     <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
                 </div>
