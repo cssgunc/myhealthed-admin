@@ -1,6 +1,6 @@
-// #height-adjustment {
-//     height: calc(100vh - 102px);
-// }
+#height-adjustment {
+    min-height: calc(100vh - 102px);
+}
 #title {
     flex: 0 0 100%;
     max-width: 100%;
