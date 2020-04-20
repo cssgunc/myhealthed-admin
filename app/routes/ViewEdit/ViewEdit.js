@@ -17,7 +17,7 @@ import TextDragDrop from './components/TextDragDrop';
     crossOrigin="anonymous"
 />
 
-import './style/style.css';
+import './../../styles/view-edit.scss';
 
 const ViewEdit = () => {
     const [open, setOpen] = useState(false);
@@ -44,14 +44,18 @@ const ViewEdit = () => {
         content =
             <SplitPane split="vertical">
                 <div>Story list view!</div>
-                <div>
+                <div id="height-adjustment">
                     <div className="header">
-                        <h2>{story.id}: {story.title}</h2>
-                        <button onClick={() => setOpen(false)} className="x">x</button> {/* Need help getting this CSS to work*/}
+                        <div className="flex-display">
+                            <a onClick={() => setOpen(false)} id="tick" className="x">x</a>
+                        </div>
+                        <div className="flex-display">
+                            <h2 id="title">{story.id}: {story.title}</h2>
+                        </div>
                     </div>
                     <Tabs variant="pills" className="nav-justified">
                         <Tab eventKey="details" label="Story Details">
-                            <Container>
+                            <Container className="top-margin">
                                 <Row>
                                     <Col>
                                         <b>Status:</b> <br /> <p>TODO</p>
@@ -71,16 +75,25 @@ const ViewEdit = () => {
                                 <Row>
                                     <Col>
                                         <b>Story Text:</b> <br />
-                                        <TextDragDrop text={text} setText={setText}/>
+                                        <TextDragDrop className="no-padding" text={text} setText={setText}/>
                                     </Col>
                                 </Row>
                             </Container>
                         </Tab>
                         <Tab eventKey="publication" label="Publication">
-
+                            <Container className="top-margin">
+                                    <Row>
+                                        <Col>
+                                            <button className="pub-button">Approve</button>
+                                        </Col>
+                                        <Col>
+                                            <button className="pub-button">Reject</button>
+                                        </Col>
+                                    </Row>
+                            </Container>
                         </Tab>
                         <Tab eventKey="writer" label="Writer">
-                            <Container>
+                            <Container className="top-margin">
                                 <Row>
                                     <Col>
                                         <b>Gender:</b> <br /> {story.perspective}
