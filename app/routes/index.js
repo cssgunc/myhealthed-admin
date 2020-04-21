@@ -82,7 +82,7 @@ import { PageLoader } from './../components/index'
 
 //------ Route Definitions --------
 // eslint-disable-next-line no-unused-vars
-export const RoutedContent = (props) => {
+export const RoutedContent = () => {
     const [currentUserType, setCurrentUserType] = useState('');
 
     useEffect(() => {
