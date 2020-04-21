@@ -7,6 +7,7 @@ import {
 
 // ----------- Pages Imports ---------------
 import APIDemo from "./API_Demo/Demo"
+import LinkDemo from "./Link/LinkDemo"
 
 import Analytics from './Dashboards/Analytics';
 import ProjectsDashboard from './Dashboards/Projects';
@@ -101,6 +102,7 @@ export const RoutedContent = (props) => {
     return (
         <Switch>
             <Route path="/demo" component={APIDemo} />
+            <Route path="/link-demo" component={LinkDemo} />
 
             <Redirect from="/" to="/dashboards/projects" exact />
             <Route path="/dashboards/analytics" exact component={Analytics} />
@@ -113,11 +115,11 @@ export const RoutedContent = (props) => {
 
             <Route path='/widgets' exact component={Widgets} />
 
-            { /*    Cards Routes     */}
+            { /*    Cards Routes     */ }
             <Route path='/cards/cards' exact component={Cards} />
             <Route path='/cards/cardsheaders' exact component={CardsHeaders} />
 
-            { /*    Layouts     */}
+            { /*    Layouts     */ }
             <Route path='/layouts/navbar' component={NavbarOnly} />
             <Route path='/layouts/sidebar' component={SidebarDefault} />
             <Route path='/layouts/sidebar-a' component={SidebarA} />
