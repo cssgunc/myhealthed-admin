@@ -6,7 +6,6 @@ import {
     ThemeSelector,
     ThemeProvider,
     PageConfigConsumer,
-    PageLoader,
 } from './../components';
 
 import './../styles/bootstrap.scss';
