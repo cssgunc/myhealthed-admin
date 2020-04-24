@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import SplitPane from 'react-split-pane';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
+import Modal from 'react-bootstrap/Modal';
 import DatePicker from 'react-datepicker';
 import {
     Container,
@@ -14,16 +15,21 @@ import {
 import { Typeahead } from 'react-bootstrap-typeahead';
 import TextDragDrop from './components/TextDragDrop';
 import ButtonInput from './components/ButtonInput';
+import ListItem from './components/ListItem';
 
 import './../../styles/view-edit.scss';
 
 const ViewEdit = () => {
-    const [open, setOpen] = useState(false);
-    const [story, setStory] = useState();
-    const [key, setKey] = useState("details");
-    const [pub, setPub] = useState(0);
-    const [pubDate, setPubDate] = useState(new Date());
-    const [tags, setTags] = useState(["These", "Changed"]);
+    const [splitOpen, setSplitOpen] = useState(false); //SplitPane state
+    const [story, setStory] = useState(); //current story
+    const [key, setKey] = useState("details"); //Tabs state
+    const [pub, setPub] = useState(0); //Approved/rejected state where 1: Approve, 2: Reject
+    const [pubDate, setPubDate] = useState(new Date()); //Date scheduled to be published
+    const [tags, setTags] = useState(["These"]); //Story tags
+    const [links, setLinks] = useState(); //All possible links for add link modal
+    const [selectedLinks, setSelectedLinks] = useState([]); //Currently selected links to attach to the story
+    const [currentLink, setCurrentLink] = useState(); //Current link selected in modal typeahead
+    const [showModal, setShowModal] = useState(false); //Modal state
 
     function setText(items) {
         let newStory = story;
@@ -39,9 +45,13 @@ const ViewEdit = () => {
                     data[0]["story texts"] = data[0]["story texts"].split(";");
                     setStory(data[0]);
                 })
-                .catch(err => { console.log(err); })
+                .catch(err => console.log(err));
+            await fetch('/api/links/get?page=0')
+                .then(response => response.json())
+                .then(data => setLinks(data))
+                .catch(err => console.log(err));
         }
-        setOpen(true);
+        setSplitOpen(true);
     }
 
     let approve =
@@ -72,8 +82,32 @@ const ViewEdit = () => {
             <br />
             <Row>
                 <Col>
-                    <b>Links:</b>
-                    <p>TODO</p>
+                    <b>Links:</b> <br />
+                    <Modal centered show={showModal} onHide={() => setShowModal(false)}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Add Link</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <Typeahead
+                                id="link_selection"
+                                clearButton
+                                options={links == null ? null : links.map((link) => link.title)}
+                                //NEED TO ADD VALIDATION FOR LINK TITLES 
+                                onChange={(title) => setCurrentLink(links.find(link => link.title == title))}
+                            />
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button onClick={() => { setShowModal(false); setSelectedLinks(selectedLinks.concat(currentLink)); }} color="primary">Save</Button>
+                        </Modal.Footer>
+                    </Modal>
+                    {selectedLinks.map((link, i) => {
+                        return (
+                            <ListItem key={i} delete={() => setSelectedLinks(selectedLinks.filter((_, index) => index !== i))}>
+                                <a target="_blank" rel="noopener noreferrer" href={link.url}>{link.title}</a>
+                            </ListItem>
+                        )
+                    })}
+                    <button onClick={() => setShowModal(true)}>Add</button>
                 </Col>
             </Row>
             <br />
@@ -81,6 +115,7 @@ const ViewEdit = () => {
                 <Col>
                     <b>Tags:</b>
                     <Typeahead
+                        id="tag_selection"
                         clearButton
                         multiple={true}
                         options={["These", "Need", "To", "Be", "Changed"]}
@@ -109,7 +144,7 @@ const ViewEdit = () => {
     }
 
     let content;
-    if (!open) {
+    if (!splitOpen) {
         content = <Button onClick={() => load()}>Open Edit Pane</Button>
     } else {
         content =
@@ -118,7 +153,7 @@ const ViewEdit = () => {
                 <div id="height-adjustment">
                     <div className="header">
                         <div className="flex-display">
-                            <a onClick={() => setOpen(false)} id="tick" className="x">x</a>
+                            <a onClick={() => setSplitOpen(false)} id="tick" className="x">x</a>
                         </div>
                         <div className="flex-display">
                             <h2 id="title">{story.id}: {story.title}</h2>
