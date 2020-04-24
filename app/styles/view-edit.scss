@@ -48,3 +48,14 @@ no-padding {
     margin-bottom: 20px;
     font-weight: bold;
 }
+.trash-can {
+    width: 25px;
+    height: 25px;
+}
+.list-row {
+    display: flex;
+    flex: auto;
+}
+.drag-input {
+    width: 500px;
+}
