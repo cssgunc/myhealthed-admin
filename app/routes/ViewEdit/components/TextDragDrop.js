@@ -69,12 +69,11 @@ class TextDragDrop extends React.Component {
     }
     
     remove = (index) => {
-        var newItems = this.state.text;
-        newItems.splice(index, 1)
+        var newState = this.state.text.filter((_, i) => i !== index);
         this.setState({
-            "text": newItems
+            "text": newState
         })
-        this.props.setText(newItems);
+        this.props.setText(newState);
     }
 
     render() {
