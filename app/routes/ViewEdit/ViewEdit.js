@@ -46,7 +46,7 @@ const ViewEdit = () => {
     const [key, setKey] = useState("details"); //Tabs state
     const [pub, setPub] = useState(0); //Approved/rejected state where 1: Approve, 2: Reject
     const [pubDate, setPubDate] = useState(new Date()); //Date scheduled to be published
-    const [tags, setTags] = useState(["These"]); //Story tags
+    const [tags, setTags] = useState([]); //Story tags
     const [links, setLinks] = useState(); //All possible links for add link modal
     const [selectedLinks, setSelectedLinks] = useState([]); //Currently selected links to attach to the story
     const [currentLink, setCurrentLink] = useState(null); //Current link selected in modal typeahead
@@ -118,10 +118,11 @@ const ViewEdit = () => {
                             <Typeahead
                                 id="link_selection"
                                 clearButton
-                                options={links == null ? null : links.map(link => link.title)}
-                                onChange={(title) => {
-                                    if (links.map(link => link.title).includes(title[0])) {
-                                        setCurrentLink(links.find(link => link.title == title))
+                                labelKey={option => option.title}
+                                options={links == null ? null : links.filter(e => !selectedLinks.includes(e))}
+                                onChange={(link) => {
+                                    if (links.includes(link[0])) {
+                                        setCurrentLink(link)
                                     }
                                 }}
                                 placeholder="Search..."
@@ -130,14 +131,29 @@ const ViewEdit = () => {
                         <Modal.Footer>
                             <Button onClick={() => {
                                 setShowLinkModal(false);
-                                setSelectedLinks([...new Set(selectedLinks.concat(currentLink).filter(e => e != null))]);
+                                if (currentLink !== null) {
+                                    setTags([...new Set(tags.concat(currentLink
+                                        .map(link => link.subtopic)
+                                        .toString()
+                                        .split(",")
+                                        .map(e => e.trim())))
+                                    ]);
+                                    setSelectedLinks(selectedLinks.concat(currentLink));
+                                }
                             }}
                                 color="primary">Save</Button>
                         </Modal.Footer>
                     </Modal>
                     {selectedLinks.map((link, i) => {
                         return (
-                            <ListItem key={i} delete={() => setSelectedLinks(selectedLinks.filter((_, index) => index !== i))}>
+                            <ListItem key={i} delete={() => {
+                                setTags(tags.filter(e => !selectedLinks[i].subtopic
+                                    .toString()
+                                    .split(",")
+                                    .map(e => e.trim())
+                                    .includes(e)));
+                                setSelectedLinks(selectedLinks.filter((_, index) => index !== i));
+                            }}>
                                 <a target="_blank" rel="noopener noreferrer" className="text-primary underline" href={link.url}>{link.title}</a>
                             </ListItem>
                         )
@@ -156,10 +172,12 @@ const ViewEdit = () => {
                         id="tag_selection"
                         clearButton
                         multiple
-                        options={["These", "Need", "To", "Be", "Changed"]}
+                        allowNew
+                        flip
+                        options={[]}
                         selected={tags}
                         onChange={(selected) => setTags(selected)}
-                        placeholder="Search..."
+                        placeholder="Add tags..."
                     />
                 </Col>
             </Row>
