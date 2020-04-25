@@ -119,7 +119,7 @@ class TextDragDrop extends React.Component {
                         )}
                     </Droppable>
                 </DragDropContext>
-                <button onClick={() => this.add()}>Add</button>
+                <button className="add-button" onClick={() => this.add()}>Add</button>
             </div>
         )
     }

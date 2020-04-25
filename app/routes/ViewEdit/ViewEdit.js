@@ -19,6 +19,27 @@ import ListItem from './components/ListItem';
 
 import './../../styles/view-edit.scss';
 
+const possibleRejections = [
+    "User under age 13",
+    "User over age 20",
+    "Too short/Not detailed/Not written in complete sentences",
+    "Irrelevant to the story prompt",
+    "Crude or inappropriate language",
+    "Self-harm or suicide",
+    "Sexual assault or abuse",
+    "Serious and non-accidental bodily/physical injury",
+    "Child abuse",
+    "Romantic relationships between minors and adults (18+)",
+    "Incest",
+    "Pornography",
+    "Nudes",
+    "Cheating",
+    "Retaliation",
+    "Prescription drugs",
+    "Religion",
+    "Unhealthy eating behavior or unhealthy body image"
+]
+
 const ViewEdit = () => {
     const [splitOpen, setSplitOpen] = useState(false); //SplitPane state
     const [story, setStory] = useState(); //current story
@@ -28,8 +49,14 @@ const ViewEdit = () => {
     const [tags, setTags] = useState(["These"]); //Story tags
     const [links, setLinks] = useState(); //All possible links for add link modal
     const [selectedLinks, setSelectedLinks] = useState([]); //Currently selected links to attach to the story
-    const [currentLink, setCurrentLink] = useState(); //Current link selected in modal typeahead
-    const [showModal, setShowModal] = useState(false); //Modal state
+    const [currentLink, setCurrentLink] = useState(null); //Current link selected in modal typeahead
+    const [selectedRejections, setSelectedRejections] = useState([]); //Currently selected rejections for story
+    const [currentRejections, setCurrentRejections] = useState([]); //Current rejections selected in modal 
+    const [showLinkModal, setShowLinkModal] = useState(false); //Link Modal state
+    const [showRejectionModal, setShowRejectionModal] = useState(false); //Rejection Modal state
+
+    var approveStyle = pub == 1 ? "color-button pub-button" : "pub-button";
+    var rejectStyle = pub == 2 ? "color-button pub-button" : "pub-button";
 
     function setText(items) {
         let newStory = story;
@@ -83,7 +110,7 @@ const ViewEdit = () => {
             <Row>
                 <Col>
                     <b>Links:</b> <br />
-                    <Modal centered show={showModal} onHide={() => setShowModal(false)}>
+                    <Modal centered show={showLinkModal} onHide={() => setShowLinkModal(false)}>
                         <Modal.Header closeButton>
                             <Modal.Title>Add Link</Modal.Title>
                         </Modal.Header>
@@ -91,23 +118,34 @@ const ViewEdit = () => {
                             <Typeahead
                                 id="link_selection"
                                 clearButton
-                                options={links == null ? null : links.map((link) => link.title)}
-                                //NEED TO ADD VALIDATION FOR LINK TITLES 
-                                onChange={(title) => setCurrentLink(links.find(link => link.title == title))}
+                                options={links == null ? null : links.map(link => link.title)}
+                                onChange={(title) => {
+                                    if (links.map(link => link.title).includes(title[0])) {
+                                        setCurrentLink(links.find(link => link.title == title))
+                                    }
+                                }}
+                                placeholder="Search..."
                             />
                         </Modal.Body>
                         <Modal.Footer>
-                            <Button onClick={() => { setShowModal(false); setSelectedLinks(selectedLinks.concat(currentLink)); }} color="primary">Save</Button>
+                            <Button onClick={() => {
+                                setShowLinkModal(false);
+                                setSelectedLinks([...new Set(selectedLinks.concat(currentLink).filter(e => e != null))]);
+                            }}
+                                color="primary">Save</Button>
                         </Modal.Footer>
                     </Modal>
                     {selectedLinks.map((link, i) => {
                         return (
                             <ListItem key={i} delete={() => setSelectedLinks(selectedLinks.filter((_, index) => index !== i))}>
-                                <a target="_blank" rel="noopener noreferrer" href={link.url}>{link.title}</a>
+                                <a target="_blank" rel="noopener noreferrer" className="text-primary underline" href={link.url}>{link.title}</a>
                             </ListItem>
                         )
                     })}
-                    <button onClick={() => setShowModal(true)}>Add</button>
+                    <button className="add-button" onClick={() => {
+                        setShowLinkModal(true);
+                        setCurrentLink(null);
+                    }}>Add</button>
                 </Col>
             </Row>
             <br />
@@ -117,11 +155,11 @@ const ViewEdit = () => {
                     <Typeahead
                         id="tag_selection"
                         clearButton
-                        multiple={true}
+                        multiple
                         options={["These", "Need", "To", "Be", "Changed"]}
                         selected={tags}
                         onChange={(selected) => setTags(selected)}
-                        placeholder="Select tags..."
+                        placeholder="Search..."
                     />
                 </Col>
             </Row>
@@ -130,7 +168,54 @@ const ViewEdit = () => {
         </Container >
 
     let reject =
-        <p>Reject</p>
+        <Container>
+            <Row>
+                <Col>
+                    <b>Reasons for rejection (only visible to Real Talk staff):</b> <br />
+                    <Modal centered show={showRejectionModal} onHide={() => setShowRejectionModal(false)}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Reasons for Rejection</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <Typeahead
+                                id="rejection_selection"
+                                clearButton
+                                multiple
+                                options={possibleRejections.filter(item => !selectedRejections.includes(item))}
+                                onChange={(reject) => setCurrentRejections(currentRejections.concat(reject))}
+                                placeholder="Search..."
+                            />
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button onClick={() => {
+                                setShowRejectionModal(false);
+                                setSelectedRejections(selectedRejections.concat([...new Set(currentRejections)]));
+                            }}
+                                color="primary">Save</Button>
+                        </Modal.Footer>
+                    </Modal>
+                    {selectedRejections.map((reject, i) => {
+                        return (
+                            <ListItem key={i} delete={() => setSelectedRejections(selectedRejections.filter((_, index) => index !== i))}>
+                                <p>{reject}</p>
+                            </ListItem>
+                        )
+                    })}
+                    <button onClick={() => {
+                        setShowRejectionModal(true);
+                        setCurrentRejections([]);
+                    }}
+                        className="add-button">Add</button>
+                </Col>
+            </Row>
+            <br />
+            <Row>
+                <Col>
+                    <b>Feedback to writer:</b> <br />
+                    <p>This part is out of my hands I think</p>
+                </Col>
+            </Row>
+        </Container>
 
     let pubContent;
     switch (pub) {
@@ -195,14 +280,10 @@ const ViewEdit = () => {
                             </Tab>
                             <Tab eventKey="publication" title="Publication">
                                 <Container className="top-margin">
-                                    <Row>
-                                        <Col>
-                                            <button onClick={() => setPub(1)} className="pub-button">Approve</button>
-                                        </Col>
-                                        <Col>
-                                            <button onClick={() => setPub(2)} className="pub-button">Reject</button>
-                                        </Col>
-                                    </Row>
+                                    <div className="button-wrapper">
+                                        <button onClick={() => setPub(1)} className={approveStyle}>Approve</button>
+                                        <button onClick={() => setPub(2)} className={rejectStyle}>Reject</button>
+                                    </div>
                                     {pubContent}
                                 </Container>
                             </Tab>
@@ -216,6 +297,7 @@ const ViewEdit = () => {
                                             <b>Age:</b> <br /> {story.age}
                                         </Col>
                                     </Row>
+                                    <br />
                                     <Row>
                                         <Col>
                                             <b>LGTBQ Status:</b> <br /> {story.lgbtq}
@@ -224,9 +306,11 @@ const ViewEdit = () => {
                                             <b>Race:</b> <br /> {story.race}
                                         </Col>
                                     </Row>
+                                    <br />
                                     <Row>
                                         <Col>
-                                            <b>Phone Number:</b> <br /> {story.phone}
+                                            <b>Phone Number:</b> <br />
+                                            <p>({story.phone.slice(0, 3)}) {story.phone.slice(3, 6)}-{story.phone.slice(6, 10)}</p>
                                         </Col>
                                     </Row>
                                 </Container>

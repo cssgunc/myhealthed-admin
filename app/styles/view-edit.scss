@@ -24,7 +24,7 @@
     padding: 8px 0 30px 0;
     background-color: #5933aa;
 }
-no-padding {
+.no-padding {
     padding: 0;
 }
 .flex-display {
@@ -40,13 +40,31 @@ no-padding {
 }
 .pub-button {
     background-color: white;
-    color: #8493a5;
-    box-shadow: 0px 0px 5px 0px rgba(105,105,105,1);
+    height: 30px;
+    width: 200px;
+    color: black;
+    box-shadow: 0px 0px 3px 0px rgba(105,105,105,1);
     border: none;
-    border-radius: 4px;
     padding: 4px 30px 4px 30px;
     margin-bottom: 20px;
-    font-weight: bold;
+}
+.add-button {
+    background-color: white;
+    height: 30px;
+    width: 80px;
+    color: black;
+    box-shadow: 0px 0px 3px 0px rgba(105,105,105,1);
+    border: none;
+}
+.button-wrapper {
+    text-align: center;
+}
+.color-button {
+    background-color: #5933aa;
+    color: white;
+}
+.underline {
+    text-decoration: underline;
 }
 .trash-can {
     width: 25px;
