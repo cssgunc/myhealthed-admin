@@ -1,4 +1,5 @@
 import React from 'react';
+import faker from 'faker/locale/en_US';
 
 import { 
     Media,
@@ -22,10 +23,10 @@ const TrResponsive = () => (
                             <span className="text-inverse">
                                 Safari
                             </span> / 
-                            1
+                            { faker.system.semver() }
                         </div>
                         <span>
-                            macOs 1
+                            macOs { faker.system.semver() }
                         </span>
                     </Media>
                 </Media>
@@ -33,7 +34,7 @@ const TrResponsive = () => (
             <td className="align-middle">
                 <div>
                     <samp>
-                        ipaddr
+                        { faker.internet.ip() }
                     </samp>
                 </div>
                 <span>
@@ -42,14 +43,14 @@ const TrResponsive = () => (
             </td>
             <td className="align-middle">
                 <div>
-                    city
+                    { faker.address.city() }
                 </div>
                 <span>
-                    state, country
+                    { faker.address.state() }, { faker.address.country() }
                 </span>
             </td>
             <td className="align-middle">
-                Monday, 12 January, 2018<br />
+                { faker.date.weekday() }, 12 { faker.date.month() }, 2018<br />
                 12:34 PM
             </td>
             <td className="align-middle text-right">
