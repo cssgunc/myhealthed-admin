@@ -10,7 +10,7 @@ export const SidebarHideSlim = ({ children }) => {
                 'sidebar__hide-slim'
             )  
         })
-    );
+    ) || null;
 };
 
 SidebarHideSlim.propTypes = {

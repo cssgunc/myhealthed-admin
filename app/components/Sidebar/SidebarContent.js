@@ -21,6 +21,8 @@ export class SidebarContent extends React.Component {
         this.state = {
             entryAnimationFinished: false,
         };
+
+        this._isMounted = false;
     }
 
     componentDidMount() {
@@ -36,12 +38,17 @@ export class SidebarContent extends React.Component {
             .then(() => {
                 this.setState({ entryAnimationFinished: true });
             });
+
+        this._isMounted = true;
     }
 
     componentWillUnmount() {
-        this.sidebarEntryAnimate.destroy();
-        this.slimSidebarAnimate.destroy();
-        this.slimMenuAnimate.destroy();
+        if (this._isMounted = true) {
+            this.sidebarEntryAnimate.destroy();
+            this.slimSidebarAnimate.destroy();
+            this.slimMenuAnimate.destroy();
+        }
+        this._isMounted = false;
     }
 
     render() {
