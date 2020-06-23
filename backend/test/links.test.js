@@ -29,7 +29,11 @@ describe('Links', () => {
                 timesUser: 0,
                 notes: "notes"
             };
-            supertest(app).post('/api/links/create').send(requestBody).expect(200, done)
+            supertest(app).post('/api/links/create').send(requestBody).expect(200).end((err, res) => {
+                createdId = res.body.id;
+                if(err) done(err);
+                else done();
+            })
         });
     });
 
