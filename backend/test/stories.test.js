@@ -6,22 +6,20 @@ const app = require('../server');
 // Group of tests using describe 
 describe('Stories', () => {
     describe('Get stories paginated', () => {
-        it('expect success HTTP 200 status', async () => {
-            let response = await supertest(app).get('/api/stories/get').query({ page:'0'});
-            expect(response.status).to.equal(200);
+        it('expect success HTTP 200 status', (done) => {
+            supertest(app).get('/api/stories/get').query({ page:'0'}).expect(200, done);
         });
     });
 
     describe('Get all stories', () => {
-        it('expect success HTTP 200 status', async () => {
-            let response = await supertest(app).get('/api/stories/getAll');
-            expect(response.status).to.equal(200);
+        it('expect success HTTP 200 status', (done) => {
+            supertest(app).get('/api/stories/getAll').expect(200, done);
         });
     });
 
     let createdId = 0;
     describe('Create new story', () => {
-        it('expect success HTTP 200 status', async () => {
+        it('expect success HTTP 200 status', (done) => {
             let requestBody = {
                 perspective: 'male',
                 age: '15',
@@ -31,31 +29,30 @@ describe('Stories', () => {
                 'story texts': 'text',
                 'link url': 'google.com'
             };
-            let response = await supertest(app).post('/api/stories/create').send(requestBody);
-            expect(response.status).to.equal(200);
-            createdId = response.body.id;
+            supertest(app).post('/api/stories/create').send(requestBody).expect(200).end((err, res) => {
+                createdId = res.body.id;
+                if(err) done(err);
+                else done();
+            });
         });
     });
 
     describe('Get story by ID', () => {
-        it('expect success HTTP 200 status', async () => {
-            let response = await supertest(app).get('/api/stories/get/id/' + createdId);
-            expect(response.status).to.equal(200);
+        it('expect success HTTP 200 status', (done) => {
+            supertest(app).get('/api/stories/get/id/' + createdId).expect(200, done);
         });
     });
     
     describe('Get all stories with a specific link', () => {
-        it('expect success HTTP 200 status', async () => {
+        it('expect success HTTP 200 status', (done) => {
             // TODO: specify link url in request body once Link table is populated
-            let response = await supertest(app).get('/api/stories/get/link/').query({ url:encodeURIComponent('google.com') });
-            expect(response.status).to.equal(200);
+            supertest(app).get('/api/stories/get/link/').query({ url:encodeURIComponent('google.com') }).expect(200, done);
         });
     });
 
     describe('Delete story', () => {
-        it('expect success HTTP 200 status', async () => {
-            let response = await supertest(app).del('/api/stories/delete/' + createdId);
-            expect(response.status).to.equal(204);
+        it('expect success HTTP 200 status', (done) => {
+            supertest(app).del('/api/stories/delete/' + createdId).expect(204, done);
         });
     });
 });
