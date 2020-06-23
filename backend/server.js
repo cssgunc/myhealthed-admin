@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("json spaces", 2);
 
-db.sequelize.sync({}).then(() => console.log("Database connected"));
+db.sequelize.sync({});
 
 app.use("/api/stories", require("./routes/stories"));
 app.use("/api/links",require("./routes/links"))
