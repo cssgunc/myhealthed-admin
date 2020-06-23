@@ -1,10 +1,10 @@
 {
-  "name": "airframe-dashboard",
+  "name": "myhealthed-admin",
   "version": "0.1.0",
-  "description": "Seed project for flexible light React/Bootstrap 4 dashboards.",
+  "description": "An admin dashboard for managing stories published on RealTalk",
   "license": "ISC",
   "author": "Webkom",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "start": "npm run start:prod",
     "build": "npm run build:prod",
