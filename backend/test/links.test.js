@@ -18,20 +18,20 @@ describe('Links', () => {
     });
 
     let createdId = 0;
-    // describe('Create new link', () => {
-    //     it('expect success HTTP 200 status', (done) => {
-    //         let requestBody = {
-    //             url: "google.com",
-    //             topic: "bullying",
-    //             subtopic: "1, 2, 3",
-    //             title: "Google",
-    //             siteName: "Google.com",
-    //             timesUser: 0,
-    //             notes: "notes"
-    //         };
-    //         supertest(app).post('/api/links/create').send(requestBody).expect(200, done)
-    //     });
-    // });
+    describe('Create new link', () => {
+        it('expect success HTTP 200 status', (done) => {
+            let requestBody = {
+                url: "google.com",
+                topic: "bullying",
+                subtopic: "1, 2, 3",
+                title: "Google",
+                siteName: "Google.com",
+                timesUser: 0,
+                notes: "notes"
+            };
+            supertest(app).post('/api/links/create').send(requestBody).expect(200, done)
+        });
+    });
 
     describe('Get link by ID', () => {
         it('expect success HTTP 200 status', (done) => {
