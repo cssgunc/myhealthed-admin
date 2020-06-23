@@ -9,7 +9,7 @@
     "start": "npm run start:prod",
     "build": "npm run build:prod",
     "clean": "node --optimize_for_size --max_old_space_size=460 --gc_interval=100 ./build/cli-tools.js --clear dist --create dist",
-    "test": "mocha --exit 'backend/test'",
+    "test": "mocha --exit --timeout 10000 'backend/test'",
     "test-clean": "npm run init-import && npm run test",
     "import-examples": "node backend/db/importData.js",
     "init-db": "node backend/db/dropTables.js && node backend/db/initDb.js",
