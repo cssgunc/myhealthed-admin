@@ -28,10 +28,10 @@ describe('Links', () => {
                 subtopic: "1, 2, 3",
                 title: "Google",
                 siteName: "Google.com",
+                timesUser: 0,
                 notes: "notes"
             };
             let response = await supertest(app).post('/api/links/create').send(requestBody);
-            // console.log(response);
             expect(response.status).to.equal(200);
             createdId = response.body.id;
         });
