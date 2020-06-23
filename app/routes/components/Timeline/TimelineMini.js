@@ -1,4 +1,5 @@
 import React from 'react';
+import faker from 'faker/locale/en_US';
 import PropTypes from 'prop-types';
 
 import { 
@@ -37,11 +38,11 @@ const TimelineMini = (props) => (
                     </div>
                     { /* Content */}
                     <p className="text-inverse mb-1">
-                        catchphrase
+                        { faker.company.catchPhrase() }
                     </p>
                     { /* Date */}
                     <p>
-                        somedate
+                        { faker.date.past().toString() }
                     </p>
                 </div>
             </div>

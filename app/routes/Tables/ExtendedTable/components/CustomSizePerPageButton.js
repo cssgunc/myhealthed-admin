@@ -24,8 +24,7 @@ export const CustomSizePerPageButton = ({
                 map(options, option => (
                     <DropdownItem
                         onClick={() => onSizePerPageChange(option.page)}
-                        active={option.page === parseInt(currSizePerPage, 10)}
-                        key={option.page}
+                        active={option.page === currSizePerPage}
                     >
                         { option.text }
                     </DropdownItem>
@@ -35,7 +34,7 @@ export const CustomSizePerPageButton = ({
     </UncontrolledButtonDropdown>
 );
 CustomSizePerPageButton.propTypes = {
-    options: PropTypes.array,
-    currSizePerPage: PropTypes.string,
+    options: PropTypes.object,
+    currSizePerPage: PropTypes.number,
     onSizePerPageChange: PropTypes.func
 }

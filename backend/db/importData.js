@@ -5,7 +5,7 @@ const db = require("../db/database");
 const Story = db.Story;
 const Link = db.Link;
 
-db.sequelize.sync({});
+db.sequelize.sync({}).then(() => console.log("Database connected"));
 
 async function loadData(){
     for(let i = 0; i < storyData.length; i++){

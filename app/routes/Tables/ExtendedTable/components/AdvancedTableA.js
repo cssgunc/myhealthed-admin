@@ -4,12 +4,14 @@ import paginationFactory from 'react-bootstrap-table2-paginator';
 import filterFactory, { Comparator, dateFilter } from 'react-bootstrap-table2-filter'
 import ToolkitProvider from 'react-bootstrap-table2-toolkit';
 import _ from 'lodash';
+import faker from 'faker/locale/en_US';
 import moment from 'moment';
 
 import {
     Badge,
     Button,
     CustomInput,
+    StarRating,
     ButtonGroup
 } from './../../../../components';
 import { CustomExportCSV } from './CustomExportButton';
@@ -41,7 +43,7 @@ const sortCaret = (order) => {
 
 const generateRow = (index) => ({
     id: index,
-    name: "productname",
+    name: faker.commerce.productName(),
     quality: randomArray([
         ProductQuality.Bad,
         ProductQuality.Good,
@@ -49,7 +51,7 @@ const generateRow = (index) => ({
     ]),
     price: (1000 + Math.random() * 1000).toFixed(2),
     satisfaction: Math.round(Math.random() * 6),
-    inStockDate: "somedate"
+    inStockDate: faker.date.past()
 });
 
 export class AdvancedTableA extends React.Component {
@@ -115,9 +117,9 @@ export class AdvancedTableA extends React.Component {
                 <React.Fragment>
                     <span className="text-nowrap">{ column.text }</span>
                     <a
-                        href="#"
+                        href="javascript:;"
                         className="d-block small text-decoration-none text-nowrap"
-                        onClick={ (e) => { e.preventDefault(); this.handleResetFilters.bind(this); }}
+                        onClick={ this.handleResetFilters.bind(this) }
                     >
                         Reset Filters <i className="fa fa-times fa-fw text-danger"></i>
                     </a>
@@ -188,6 +190,18 @@ export class AdvancedTableA extends React.Component {
             ...buildCustomNumberFilter({
                 comparators: [Comparator.EQ, Comparator.GT, Comparator.LT],
                 getFilter: filter => { this.priceFilter = filter; }
+            })
+        }, {
+            dataField: 'satisfaction',
+            text: 'Buyer Satisfaction',
+            sort: true,
+            sortCaret,
+            formatter: (cell) =>
+                <StarRating at={ cell } max={ 6 } />,
+            ...buildCustomSelectFilter({
+                placeholder: 'Select Satisfaction',
+                options: _.times(6, (i) => ({ value: i + 1, label: i + 1 })),
+                getFilter: filter => { this.satisfactionFilter = filter; }
             })
         }, {
             dataField: 'inStockDate',
