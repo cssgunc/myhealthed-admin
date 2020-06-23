@@ -15,7 +15,7 @@ export const CustomPaginationPanel = ({ onPageChange, pages, ...otherProps }) =>
         <Pagination aria-label="Page navigation example" { ...otherProps } listClassName="my-0">
             {
                 map(pages, page => (
-                    <PaginationItem active={ page.active } disabled={ page.disabled }>
+                    <PaginationItem active={ page.active } disabled={ page.disabled } key={ page.page }>
                         <PaginationLink onClick={() => onPageChange(page.page)}>
                             { isInteger(page.page) ? page.page : mapToFa[page.page] }
                         </PaginationLink>

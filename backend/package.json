@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "mocha --exit './test'",
-    "test-clean": "npm run init-import && npm run test",
+    "test-clean": "npm run init-db && npm run test",
+    "test-import": "npm run init-import && npm run test",
     "init-import": "npm run init-db && npm run import-examples",
     "init-db": "node ./db/dropTables.js && node ./db/initDb.js",
     "import-examples": "node ./db/importData.js",
@@ -16,7 +17,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.19.0",
     "chai": "^4.2.0",
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",

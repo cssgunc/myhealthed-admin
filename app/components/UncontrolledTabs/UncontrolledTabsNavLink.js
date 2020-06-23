@@ -12,9 +12,12 @@ const UncontrolledTabsNavLink = (props) => (
         (value) => (
             <NavLink
                 { ..._.omit(props, ['tabId']) }
-                onClick={ () => { value.setActiveTabId(props.tabId) } }
+                onClick={ (e) => { 
+                    e.preventDefault();
+                    value.setActiveTabId(props.tabId);
+                }}
                 className={ classNames({ active: props.tabId === value.activeTabId }) }
-                href="javascript:;"
+                href="#"
             />
         )
     }

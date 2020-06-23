@@ -148,6 +148,7 @@ module.exports = {
             '/api': 'http://localhost:3001'
         },
         host: '0.0.0.0',
-        port: process.env.PORT || 4100
+        port: process.env.PORT || 4100,
+        clientLogLevel: 'info'
     }
 }

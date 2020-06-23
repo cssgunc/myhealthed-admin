@@ -1,7 +1,7 @@
+require('dotenv').config()
 const Sequelize = require("sequelize");
-const Secrets = require("../config/secrets");
 const sequelize =  new Sequelize(
-  Secrets["database"]["url"],
+  process.env.DATABASE_URL,
   {
     logging: false,
     // operatorsAliases: false,
