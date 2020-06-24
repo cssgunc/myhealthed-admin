@@ -70,10 +70,11 @@
     width: 25px;
     height: 25px;
 }
-.list-row {
-    display: flex;
-    flex: auto;
+.drag-icon {
+    height: 100%;
+    display: inline-block;
 }
 .drag-input {
     width: 500px;
+    display: inline-block;
 }

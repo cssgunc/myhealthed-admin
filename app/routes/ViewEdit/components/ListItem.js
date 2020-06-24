@@ -11,7 +11,7 @@ export default class ListItem extends React.Component {
     render() {
         return (
             <div>
-                <div className="list-row">
+                <div className="row">
                     {this.props.children}
                     <img
                         onClick={this.props.delete}
