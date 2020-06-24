@@ -17,6 +17,8 @@ import TextDragDrop from './components/TextDragDrop';
 import ButtonInput from './components/ButtonInput';
 import ListItem from './components/ListItem';
 
+import axios from "axios";
+
 import './../../styles/view-edit.scss';
 
 const possibleRejections = [
@@ -46,6 +48,7 @@ const ViewEdit = () => {
     const [key, setKey] = useState("details"); //Tabs state
     const [pub, setPub] = useState(0); //Approved/rejected state where 1: Approve, 2: Reject
     const [pubDate, setPubDate] = useState(new Date()); //Date scheduled to be published
+    const [lede, setLede] = useState(0); //Selected lede for publication
     const [tags, setTags] = useState([]); //Story tags
     const [links, setLinks] = useState(); //All possible links for add link modal
     const [selectedLinks, setSelectedLinks] = useState([]); //Currently selected links to attach to the story
@@ -66,14 +69,14 @@ const ViewEdit = () => {
 
     async function load() {
         if (story == null) {
-            await fetch(`/api/stories/get?page=0`)
+            await axios.get('/api/stories/get?page=0')
                 .then(response => response.json())
                 .then(data => {
                     data[0]["story texts"] = data[0]["story texts"].split(";");
                     setStory(data[0]);
                 })
                 .catch(err => console.log(err));
-            await fetch('/api/links/get?page=0')
+            await axios.get('/api/links/get?page=0')
                 .then(response => response.json())
                 .then(data => setLinks(data))
                 .catch(err => console.log(err));
@@ -82,7 +85,30 @@ const ViewEdit = () => {
     }
 
     function saveStory() {
-        console.log(story);
+        // TODO implement tags
+        let updatedStory = {
+            age: story.age,
+            cringey: story.cringey,
+            haha: story.haha,
+            id: story.id,
+            interesting: story.interesting,
+            lede: story["story texts"][lede], // Grabs correct text corresponding to lede index
+            lgbtq: story.lgbtq,
+            like: story.like,
+            "link url": selectedLinks[0].url, // Grabs first url
+            "me too": story["me too"],
+            perspective: story.perspective,
+            phone: story.phone,
+            publicationDate: pubDate,
+            publicationStatus: pub === 1 ? "approved" : "rejected", // TODO implement pending status
+            race: story.race,
+            "story texts": story["story texts"].join(";"),
+            title: story.title,
+            topic: story.topic
+        };
+        axios.post('/api/stories/edit', updatedStory)
+            .then((response) => console.log(response))
+            .catch((error) => console.log(error));
     }
 
     let approve =
@@ -101,10 +127,10 @@ const ViewEdit = () => {
             <Row>
                 <Col>
                     <b>Lede:</b>
-                    <Input type="select">
+                    <Input type="select" onChange={(e) => setLede(e.target.value)}> 
                         {story == null ? null : story["story texts"].map((val, i) => {
                             return (
-                                <option key={i}>{val}</option>
+                                <option key={i} value={i}>{val}</option>
                             )
                         })}
                     </Input>
