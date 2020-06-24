@@ -33,7 +33,12 @@ module.exports = function(sequelize, Sequelize) {
       lede: {
         type: Sequelize.STRING
       },
-      publishedAt: {
+      publicationStatus: {
+        type: Sequelize.ENUM({
+          values: ["accepted", "rejected", "pending"]
+        })
+      },
+      publicationDate: {
         type: Sequelize.DATE,
         allowNull: true
       },

@@ -81,6 +81,10 @@ const ViewEdit = () => {
         setSplitOpen(true);
     }
 
+    function saveStory() {
+        console.log(story);
+    }
+
     let approve =
         <Container>
             <Row>
@@ -334,6 +338,14 @@ const ViewEdit = () => {
                                 </Container>
                             </Tab>
                         </Tabs>
+                    </Container>
+                    <br/>
+                    <Container>
+                        <div className="footer">
+                            <div className="text-center">
+                                <Button color="primary" size="lg" onClick={() => saveStory()}>Save Story</Button>
+                            </div>
+                        </div>
                     </Container>
                 </div>
             </SplitPane>
