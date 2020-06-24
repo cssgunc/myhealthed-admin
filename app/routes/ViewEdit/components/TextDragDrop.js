@@ -101,6 +101,7 @@ class TextDragDrop extends React.Component {
                                                             provided.draggableProps.style
                                                         )}
                                                     >
+                                                        <i className="fa fa-fw fa-arrows-v drag-icon align-middle" aria-hidden="true"></i>
                                                         <Input
                                                             name={i}
                                                             type="textarea"
