@@ -36,6 +36,23 @@ describe('Stories', () => {
             });
         });
     });
+    
+    describe('Edit existing story', () => {
+        it('expect success HTTP 200 status', async () => {
+            let requestBody = {
+                id: createdId,
+                perspective: 'male',
+                age: '15',
+                topic: 'bullying',
+                title: 'title',
+                lede: 'lede',
+                'story texts': 'text',
+                'link url': 'google.com'
+            };
+            let response = await supertest(app).post('/api/stories/edit').send(requestBody);
+            expect(response.status).to.equal(200);
+        });
+    });
 
     describe('Get story by ID', () => {
         it('expect success HTTP 200 status', (done) => {
