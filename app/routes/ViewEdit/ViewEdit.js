@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import SplitPane from 'react-split-pane';
+import Alert from 'react-bootstrap/Alert';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import Modal from 'react-bootstrap/Modal';
@@ -44,6 +45,8 @@ const possibleRejections = [
 
 const ViewEdit = () => {
     const [splitOpen, setSplitOpen] = useState(false); //SplitPane state
+    const [alertStatus, setAlertStatus] = useState(""); //alert state
+    const [alertMessage, setAlertMessage] = useState(); //alert message
     const [story, setStory] = useState(); //current story
     const [key, setKey] = useState("details"); //Tabs state
     const [pub, setPub] = useState(0); //Approved/rejected state where 1: Approve, 2: Reject
@@ -53,7 +56,7 @@ const ViewEdit = () => {
     const [links, setLinks] = useState(); //All possible links for add link modal
     const [selectedLinks, setSelectedLinks] = useState([]); //Currently selected links to attach to the story
     const [currentLink, setCurrentLink] = useState(null); //Current link selected in modal typeahead
-    const [reasonForRejection, setReasonForRejection] = useState();
+    const [reasonForRejection, setReasonForRejection] = useState(); //Reason for rejecting the story
     const [selectedRejections, setSelectedRejections] = useState([]); //Currently selected rejections for story
     const [currentRejections, setCurrentRejections] = useState([]); //Current rejections selected in modal 
     const [showLinkModal, setShowLinkModal] = useState(false); //Link Modal state
@@ -78,7 +81,7 @@ const ViewEdit = () => {
                     data[0]["story texts"] = data[0]["story texts"].split(";");
                     setStory(data[0]);
                 })
-                .catch(err => console.log("NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO " + err ));
+                .catch(err => console.log(err));
             await axios.get('/api/links/get?page=0')
                 .then(data => setLinks(data.data))
                 .catch(err => console.log(err));
@@ -119,8 +122,16 @@ const ViewEdit = () => {
             "me too": story["me too"]
         };
         axios.post('/api/stories/edit', updatedStory)
-            .then((response) => console.log(response))
-            .catch((error) => console.log(error));
+            .then((response) => {
+                console.log(response);
+                setAlertStatus("success");
+                setAlertMessage("Story successfully saved!");
+            })
+            .catch((error) => {
+                console.log(error);
+                setAlertStatus("danger");
+                setAlertMessage("There was an error saving the story.")
+            });
     }
 
     let approve =
@@ -270,6 +281,18 @@ const ViewEdit = () => {
                     </div>
                     <Container>
                         <br />
+                        {alertStatus !== "" &&
+                            <Alert variant={alertStatus} onClose={() => setAlertStatus("")}>
+                                {alertMessage}
+                                <hr/>
+                                <div className="d-flex justify-content-end">
+                                    <Button onClick={() => setAlertStatus("")} color={alertStatus}>
+                                        Close
+                                    </Button>
+                                </div>
+                            </Alert>
+                        }
+                        
                         <Tabs
                             variant="pills"
                             activeKey={key}
