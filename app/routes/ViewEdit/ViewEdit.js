@@ -53,11 +53,14 @@ const ViewEdit = () => {
     const [links, setLinks] = useState(); //All possible links for add link modal
     const [selectedLinks, setSelectedLinks] = useState([]); //Currently selected links to attach to the story
     const [currentLink, setCurrentLink] = useState(null); //Current link selected in modal typeahead
+    const [reasonForRejection, setReasonForRejection] = useState();
     const [selectedRejections, setSelectedRejections] = useState([]); //Currently selected rejections for story
     const [currentRejections, setCurrentRejections] = useState([]); //Current rejections selected in modal 
     const [showLinkModal, setShowLinkModal] = useState(false); //Link Modal state
     const [showRejectionModal, setShowRejectionModal] = useState(false); //Rejection Modal state
 
+    
+    var underReviewStyle = pub == 0 ? "color-button pub-button" : "pub-button";
     var approveStyle = pub == 1 ? "color-button pub-button" : "pub-button";
     var rejectStyle = pub == 2 ? "color-button pub-button" : "pub-button";
 
@@ -70,15 +73,14 @@ const ViewEdit = () => {
     async function load() {
         if (story == null) {
             await axios.get('/api/stories/get?page=0')
-                .then(response => response.json())
-                .then(data => {
+                .then(response => {
+                    let data = response.data;
                     data[0]["story texts"] = data[0]["story texts"].split(";");
                     setStory(data[0]);
                 })
-                .catch(err => console.log(err));
+                .catch(err => console.log("NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO " + err ));
             await axios.get('/api/links/get?page=0')
-                .then(response => response.json())
-                .then(data => setLinks(data))
+                .then(data => setLinks(data.data))
                 .catch(err => console.log(err));
         }
         setSplitOpen(true);
@@ -87,24 +89,34 @@ const ViewEdit = () => {
     function saveStory() {
         // TODO implement tags
         let updatedStory = {
-            age: story.age,
-            cringey: story.cringey,
-            haha: story.haha,
             id: story.id,
-            interesting: story.interesting,
-            lede: story["story texts"][lede], // Grabs correct text corresponding to lede index
+            // demographics
+            age: story.age,
             lgbtq: story.lgbtq,
-            like: story.like,
-            "link url": selectedLinks[0].url, // Grabs first url
-            "me too": story["me too"],
             perspective: story.perspective,
             phone: story.phone,
-            publicationDate: pubDate,
-            publicationStatus: pub === 1 ? "approved" : "rejected", // TODO implement pending status
             race: story.race,
+            // story info
+            lede: story["story texts"][lede], // Grabs correct text corresponding to lede index
             "story texts": story["story texts"].join(";"),
             title: story.title,
-            topic: story.topic
+            topic: story.topic,
+            // link
+            "link url": selectedLinks[0] ? selectLinks[0].url : null, // Grabs first url
+            // story status
+            status: pub === 1 ? "accepted" : (pub === 2 ? "not accepted" : "under review"),
+            published_at: pubDate,
+            sent_published_notification_at: pubDate, // TODO figure out how to get this value
+            accepted_at: pub === 1 ? Date.now() : null,
+            sent_accepted_notification_at: Date.now(),
+            rejected_at: pub === 2 ? Date.now() : null,
+            reason_for_rejection: pub === 2 ? reasonForRejection : null,
+            // reactions
+            cringey: story.cringey,
+            haha: story.haha,
+            interesting: story.interesting,
+            like: story.like,
+            "me too": story["me too"]
         };
         axios.post('/api/stories/edit', updatedStory)
             .then((response) => console.log(response))
@@ -220,47 +232,11 @@ const ViewEdit = () => {
             <Row>
                 <Col>
                     <b>Reasons for rejection (only visible to Real Talk staff):</b> <br />
-                    <Modal centered show={showRejectionModal} onHide={() => setShowRejectionModal(false)}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>Reasons for Rejection</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <Typeahead
-                                id="rejection_selection"
-                                clearButton
-                                multiple
-                                options={possibleRejections.filter(item => !selectedRejections.includes(item))}
-                                onChange={(reject) => setCurrentRejections(currentRejections.concat(reject))}
-                                placeholder="Search..."
-                            />
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button onClick={() => {
-                                setShowRejectionModal(false);
-                                setSelectedRejections(selectedRejections.concat([...new Set(currentRejections)]));
-                            }}
-                                color="primary">Save</Button>
-                        </Modal.Footer>
-                    </Modal>
-                    {selectedRejections.map((reject, i) => {
-                        return (
-                            <ListItem key={i} delete={() => setSelectedRejections(selectedRejections.filter((_, index) => index !== i))}>
-                                <p>{reject}</p>
-                            </ListItem>
-                        )
-                    })}
-                    <button onClick={() => {
-                        setShowRejectionModal(true);
-                        setCurrentRejections([]);
-                    }}
-                        className="add-button">Add</button>
-                </Col>
-            </Row>
-            <br />
-            <Row>
-                <Col>
-                    <b>Feedback to writer:</b> <br />
-                    <p>This part is out of my hands I think</p>
+                   <Input 
+                        id="rejection_reason"
+                        type="textarea"
+                        onChange={(e) => setReasonForRejection(e.target.value)}
+                    />
                 </Col>
             </Row>
         </Container>
@@ -328,6 +304,9 @@ const ViewEdit = () => {
                             </Tab>
                             <Tab eventKey="publication" title="Publication">
                                 <Container className="top-margin">
+                                    <div className="button-wrapper">
+                                        <button onClick={() => setPub(0)} className={underReviewStyle}>Under Review</button>
+                                    </div>
                                     <div className="button-wrapper">
                                         <button onClick={() => setPub(1)} className={approveStyle}>Approve</button>
                                         <button onClick={() => setPub(2)} className={rejectStyle}>Reject</button>
