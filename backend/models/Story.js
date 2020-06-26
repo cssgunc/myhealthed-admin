@@ -1,3 +1,5 @@
+const { STRING } = require("sequelize");
+
 module.exports = function(sequelize, Sequelize) {
   return sequelize.define(
     "stories",
@@ -7,19 +9,30 @@ module.exports = function(sequelize, Sequelize) {
         autoIncrement: true,
         primaryKey: true
       },
-      perspective: {
-        type: Sequelize.STRING
-      },
+      // demographics
       age: {
         type: Sequelize.INTEGER
       },
       lgbtq: {
         type: Sequelize.STRING
       },
-      race: {
+      perspective: {
         type: Sequelize.STRING
       },
       phone: {
+        type: Sequelize.STRING
+      },
+      race: {
+        type: Sequelize.STRING
+      },
+      // story info
+      lede: {
+        type: Sequelize.STRING
+      },
+      "story texts": {
+        type: Sequelize.STRING(5000)
+      },
+      title: {
         type: Sequelize.STRING
       },
       topic: {
@@ -27,34 +40,7 @@ module.exports = function(sequelize, Sequelize) {
           values: ['bullying', 'relationships',"puberty"]
         })
       },
-      title: {
-        type: Sequelize.STRING
-      },
-      lede: {
-        type: Sequelize.STRING
-      },
-      publishedAt: {
-        type: Sequelize.DATE,
-        allowNull: true
-      },
-      like: {
-        type: Sequelize.INTEGER
-      },
-      cringey: {
-        type: Sequelize.INTEGER
-      },
-      haha: {
-        type: Sequelize.INTEGER
-      },
-      "me too": {
-        type: Sequelize.INTEGER
-      },
-      interesting: {
-        type: Sequelize.INTEGER
-      },
-      "story texts": {
-        type: Sequelize.STRING(5000)
-      },
+      // links
       "link url": {
         type: Sequelize.STRING
       },
@@ -70,10 +56,56 @@ module.exports = function(sequelize, Sequelize) {
       "link body": {
         type: Sequelize.STRING
       },
+      // story status
+      status: {
+        type: Sequelize.ENUM({
+          values: ["accepted", "not accepted", "under review"]
+        }),
+        default: "under review"
+      },
+      published_at: {
+        type: Sequelize.DATE,
+        allowNull: true
+      },
+      sent_published_notification_at: {
+        type: Sequelize.DATE,
+        allowNull: true
+      },
+      accepted_at: {
+        type: Sequelize.DATE,
+        allowNull: true
+      },
+      sent_accepted_notification_at: {
+        type: Sequelize.DATE,
+        allowNull: true
+      },
+      rejected_at: {
+        type: Sequelize.DATE,
+        allowNull: true
+      },
+      reason_for_rejection: {
+        type: Sequelize.STRING
+      },
+      // reactions
+      cringey: {
+        type: Sequelize.INTEGER
+      },
+      haha: {
+        type: Sequelize.INTEGER
+      },
+      like: {
+        type: Sequelize.INTEGER
+      },
+      interesting: {
+        type: Sequelize.INTEGER
+      },
+      "me too": {
+        type: Sequelize.INTEGER
+      },
+      // timestamps
       createdAt: {
         type: Sequelize.DATE,
         allowNull: true
-
       },
       updatedAt: {
         type: Sequelize.DATE,

@@ -60,8 +60,43 @@ router.post("/create", (req, res, next) => {
             updatedAt: req.body.updatedAt,
         }
         Story.create(newStory).then(data => res.send(data));
+    } catch(e) {
+        e.status = 500;
+        next(e);
     }
-    catch(e) {
+});
+
+router.post("/edit", (req, res, next) => {
+    if(!req.body){
+        res.sendStatus(400);
+        return;
+    }
+    try {
+        let story = {
+            perspective: req.body.perspective,
+            age: req.body.age,
+            lgbtq: req.body.lgbtq,
+            race: req.body.race,
+            phone: req.body.phone,
+            topic: req.body.topic,
+            title: req.body.title,
+            lede: req.body.lede,
+            "story texts": req.body['story texts'],
+            "link url": req.body['link url'],
+            "link photo": req.body['link photo'],
+            "link title": req.body['link title'],
+            "link site name": req.body['link site name'],
+            "link body": req.body['link body'],
+            createdAt: req.body.createdAt,
+            updatedAt: req.body.updatedAt,
+        }
+        Story.update(
+            story,
+            {
+                where: { id: req.body.id }
+            })
+        .then(data => res.send(data));
+    } catch(e) {
         e.status = 500;
         next(e);
     }
